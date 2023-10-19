@@ -594,9 +594,9 @@
                     <tr>
                     <td>
                     <?php
-                    if ($row->academic_year == "2023-24"){
-                        echo "Mid-Term Examination Subjects Percentage / Grade";
-                    }
+                    // if ($row->academic_year == "2023-24"){
+                    //     echo "Mid-Term Examination Subjects Percentage / Grade";
+                    // }
                     ?>
                     </td>
                     </tr> -->

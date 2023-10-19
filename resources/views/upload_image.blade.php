@@ -273,7 +273,9 @@
             ?>
             <center> <header><b><u><h3>Details of Schooling</h3></u></b></header></center>
             <div class="col-md-2 ml-auto">
-        <!-- <button id="btn" type="button" class="btn btn-outline-primary add-row form-control" <?php if($users_id[0]->rec_id > 2){ echo "disabled";} ?>>Add</button>-->
+        <!-- <button id="btn" type="button" class="btn btn-outline-primary add-row form-control" <?php 
+        // if($users_id[0]->rec_id > 2){ echo "disabled";} 
+        ?>>Add</button>-->
 
         <input type="hidden" id="old_school_value" name="old_school_value" value="2">
     </div> 
@@ -494,9 +496,11 @@
                     <div class="col-md-3">
                     </div>
 
-                    <div class="col-md-3">
-                        <button id="btn_1" type="button" class="btn btn-outline-primary remove-row-1 form-control" <?php if($users_id[0]->rec_id > 2){ echo "disabled";} ?>>Remove</button>
-                    </div>
+                    <!-- <div class="col-md-3">
+                        <button id="btn_1" type="button" class="btn btn-outline-primary remove-row-1 form-control" <?php 
+                        // if($users_id[0]->rec_id > 2){ echo "disabled";} 
+                        ?>>Remove</button>
+                    </div> -->
 
                     </div>
                     </div>
@@ -604,9 +608,9 @@
                     <div class="col-md-3">
                     </div>
 
-                    <div class="col-md-3">
+                    <!-- <div class="col-md-3">
                         <button id="btn_2" type="button" class="btn btn-outline-primary remove-row-2 form-control">Remove</button>
-                    </div>
+                    </div> -->
 
                     </div>
                     </div>
@@ -632,8 +636,7 @@
               $academic_3 = $acad_yr_3_1."-".$acad_yr_3_2;
               ?>
                 <center> <header><b><u><h3>Details of Schooling</h3></u></b></header></center>
-                <!-- <div class="col-md-2 ml-auto">
-        <button id="btn" type="button" class="btn btn-outline-primary add-row form-control">Add</button>-->
+                <div class="col-md-2 ml-auto">
         <input type="hidden" id="old_school_value" name="old_school_value" value="2">
     </div> 
                 <br>
@@ -735,7 +738,6 @@
                     </div>
                     </div>
                     
-                    <!-- <div class="school_1" hidden> -->
                     <hr>
                     <div class="row">
         <div class="col-md-3"> <b>Academic Year
@@ -839,14 +841,10 @@
                     <div class="col-md-3">
                     </div>
 
-                    <!-- <div class="col-md-3">
-                        <button id="btn_1" type="button" class="btn btn-outline-primary remove-row-1 form-control">Remove</button>
-                    </div> -->
-
                     </div>
                     </div>
 
-                    <!-- <div class="school_2" hidden> -->
+                <div style="margin-left:15px; margin-right:15px; margin-top:-25px; margin-bottom:10px;">
                     <hr>
                     <div class="row">
         <div class="col-md-3"> <b>Academic Year
@@ -956,6 +954,8 @@
 
                     </div>
                     </div>
+                    </div>
+                    
 <?php
 }
                     }
