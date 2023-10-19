@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- <title>OTP for Login</title> -->
+</head>
+<body style="justify-content: center;">
+    <div style="font-family: Helvetica,Arial,sans-serif;min-width:1000px;line-height:2">
+        <div style="margin:50px auto;width:70%;padding:20px 0">
+        <div class="container-fluid" style="display: flex; align-items: center;">
+        <img src="https://leap.npsypr.edu.in/uploads/logo.png" alt="Npsypr" style="width: 80px; height: 80px;">
+        </div>
+        <p style="font-size:1.1em"><b>Dear Parent</b><br> </p>
+        <p style="font-size:1.1em">
+        Greetings from National Public School Yeshwanthpur!<br/>
+        Please find attached the Registration Form with Admit Card and Registration Fee receipt.<br/>
+        The entrance test dates will be posted on the Website and will also be emailed to you. <br/>
+        <b>Points to be noted on the day of Entrance.</b><br/>
+        <ol type="1">
+            <li>Hard copy of the Online Registration form with supporting documents should be submitted. The copies of supporting documents mentioned below should be attested by both the parents before submission.</li>
+            <ol type="a">
+                <li>Birth certificate of the student</li>
+                <li>Class 2 & above applicants should provide previous 2 years academic progress report and current Year Mid-term report card. Class 1 applicants should submit Study Certificate from the previous school.</li>
+                <li>Student’s Aadhar Card</li>
+                <li>Parents’ Aadhar Card</li>
+                <li>If your child is a Foreign National then please submit a copy of your ward's passport attested by both parents.</li>
+            </ol>
+            <li>Students should carry the print out of the admit card.</li>
+            <li>Students should be accompanied by only one parent.</li>
+            <li>Students to carry a pencil pouch with 1 pen, 2 sharpened pencils, eraser and ruler. </li>
+            <li>No writing pads to be carried inside the exam hall.</li>
+            <li>Students should carry their own water bottles.</li>
+            <li>Students who have cleared the entrance test will receive a mail regarding the interaction session with the Principal. Interaction session should be attended by both the parents along with their ward(s).</li>
+        </ol>
+        For more details on entrance, kindly visit this link https://npsypr.edu.in/entrance-test-details/<br/>
+        In case of any issues please mail to admissions@npsypr.edu.in<br/></p>
+        <p style="font-size:1.1em">Regards,<br>
+        Admin<br>
+        NPS YPR</p>        
+        </div>
+        <hr>
+        <div>
+        This is an auto generated message, please do not reply to this email address
+        </div>
+        </div>
+</body>
+</html>

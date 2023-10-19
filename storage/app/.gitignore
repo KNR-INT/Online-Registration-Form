@@ -1,0 +1,8 @@
+*
+!public/
+!.gitignore
+$request->image->move(public_path('images'), $imageName);
+
+  
+
+// public/images/file.png,jpg,PNG

@@ -1,0 +1,3 @@
+*
+!.gitignore
+$path = $request->file('image')->store('public/images');
