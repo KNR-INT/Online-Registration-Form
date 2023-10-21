@@ -53,23 +53,23 @@ class StudentController extends Controller
                         ->withErrors($validator)
                         ->withInput();
         }else {
-    if ($request->input('sibling_change') == 'Yes') {
-        if (!$request->input('sib1_name') && !$request->input('sib1_cls_sec')) {
-            $validator->errors()->add('sib1_name', 'Sibling 1 name & class is required');
+            if ($request->input('sibling_change') == 'Yes') {
+                if (!$request->input('sib1_name') && !$request->input('sib1_cls_sec')) {
+                    $validator->errors()->add('sib1_name', 'Sibling 1 name & class is required');
+                }
+                if (!$request->input('sib1_name') && $request->input('sib1_cls_sec')) {
+                    $validator->errors()->add('sib1_name', 'Sibling 1 name is required');
+                }
+                if ($request->input('sib1_name') && !$request->input('sib1_cls_sec')) {
+                    $validator->errors()->add('sib1_cls_sec', 'Sibling 1 class and section are required');
+                }
+            }
+            if ($validator->errors()->any()) {
+                return redirect()->back()
+                    ->withErrors($validator)
+                    ->withInput();
+            }
         }
-        if (!$request->input('sib1_name') && $request->input('sib1_cls_sec')) {
-            $validator->errors()->add('sib1_name', 'Sibling 1 name is required');
-        }
-        if ($request->input('sib1_name') && !$request->input('sib1_cls_sec')) {
-            $validator->errors()->add('sib1_cls_sec', 'Sibling 1 class and section are required');
-        }
-    }
-    if ($validator->errors()->any()) {
-        return redirect()->back()
-            ->withErrors($validator)
-            ->withInput();
-    }
-}
 
         $acadamic_year_online= DB::connection('secondary')
         ->table('academic_year')

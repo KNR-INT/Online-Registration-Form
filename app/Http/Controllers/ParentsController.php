@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 use App\Models\Parent1;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+
 
 class ParentsController extends Controller
 {
@@ -15,6 +17,54 @@ class ParentsController extends Controller
     {
         $appli_id = $request->input('appli_id');
         $parent = Parent1::find($appli_id);
+
+        $validator = Validator::make($request->all(), [
+            'father_name' => 'required|string|max:70',
+            'father_mob' => 'required|max:14',
+            'father_email_verified_at' => 'required|max:50',
+            'father_mother_tongue' => 'required|string',
+            'father_graduation' => 'required',
+            'father_residential_address' => 'required|max:150',
+            'father_area' => 'required|max:100',
+            'father_district' => 'required|max:100',
+            'father_state' => 'required|max:100',
+            'father_country' => 'required',
+            'father_pincode' => 'required|max:8',
+            'father_residential_no' => 'max:11',
+            // 'father_organization' => 'max:70',
+            'father_profession' => 'max:100',
+            'father_company' => 'max:100',
+            'father_designation' => 'max:50',
+            'father_company_address' => 'max:150',
+            'father_office_number' => 'max:11',
+            'father_annual_income' => 'required|max:15',
+            'mother_name' => 'required|string|max:70',
+            'mother_mob' => 'required|max:14',
+            'mother_email_verified_at' => 'required|max:50',
+            'mother_mother_tongue' => 'required|string',
+            'mother_graduation' => 'required',
+            'mother_residential_address' => 'required|max:150',
+            'mother_area' => 'required|max:100',
+            'mother_district' => 'required|max:100',
+            'mother_state' => 'required|max:100',
+            'mother_country' => 'required',
+            'mother_pincode' => 'required|max:8',
+            'mother_residential_no' => 'max:11',
+            // 'mother_organization' => 'required',
+            'mother_profession' => 'max:100',
+            'mother_company' => 'max:100',
+            'mother_designation' => 'max:50',
+            'mother_company_address' => 'max:150',
+            'mother_office_number' => 'max:11',
+            'mother_annual_income' => 'required|max:15',
+        ]);
+        
+        if ($validator->fails()) {
+            return redirect()->back()
+                        ->withErrors($validator)
+                        ->withInput();
+        }
+
         $parent->father_name = strtoupper($request->input('father_name'));
         $parent->father_mob = $request->input('father_mob');
         $parent->father_email_verified_at = $request->input('father_email_verified_at');
@@ -56,11 +106,9 @@ class ParentsController extends Controller
         $parent->mother_office_number = $request->input('mother_office_number');
         $parent->mother_annual_income = $request->input('mother_annual_income');
         $class = $request->input('page_type');
-
         // $student->link_class = $request->input('page_type');
-
         $parent->update();
- return redirect('/upload_doc/a?class='.$class.'&appli_id='.$appli_id);    
+        return redirect('/upload_doc/a?class='.$class.'&appli_id='.$appli_id);    
     } 
     public function edit($id)
     {

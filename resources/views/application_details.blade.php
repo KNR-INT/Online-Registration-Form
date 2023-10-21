@@ -464,6 +464,21 @@
                     </tr>
 
                     <tr>
+                    <td><b>Father's Office Number</b></td>
+                    <td>
+                    <?php
+                        if(!empty($student[0]->father_office_number))
+                        {
+                        echo '<input class="form-control" type="text" id="father_office_number" value="'.$student[0]->father_office_number.'" readonly>';
+                        }
+                        else {
+                        echo '<input class="form-control" type="text" id="father_office_number" value="NIL" readonly>';
+                        }
+                    ?>
+                    </td>
+                    </tr>
+
+                    <tr>
                     <td><b>Father's Annual Income(INR)</b></td>
                     <td><input class="form-control" type="text" id="gross" value="<?php echo $student[0]->father_annual_income ?>" readonly></td>
                     </tr>
@@ -542,6 +557,21 @@
                         }
                         else {
                         echo '<input class="form-control" type="text" id="mother_company_address" value="NIL" readonly>';
+                        }
+                    ?>
+                    </td>
+                    </tr>
+
+                    <tr>
+                    <td><b>Mother's Office Number</b></td>
+                    <td>
+                    <?php
+                        if(!empty($student[0]->mother_office_number))
+                        {
+                        echo '<input class="form-control" type="text" id="mother_office_number" value="'.$student[0]->mother_office_number.'" readonly>';
+                        }
+                        else {
+                        echo '<input class="form-control" type="text" id="mother_office_number" value="NIL" readonly>';
                         }
                     ?>
                     </td>

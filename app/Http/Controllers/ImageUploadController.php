@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 use Intervention\Image\Facades\Image;
+use Illuminate\Support\Facades\Validator;
 
 class ImageUploadController extends Controller
 {
@@ -30,7 +31,7 @@ class ImageUploadController extends Controller
         if ($student) {
             if($appli_class == "PRE-K" || $appli_class == "Montessori I" || $appli_class == "Montessori II"|| $appli_class == "Montessori III"|| $appli_class == "Kindergarten I"|| $appli_class == "Kindergarten II" || $appli_class == "Grade 1")
             {
-                $request->validate([
+                $validator = Validator::make($request->all(), [
                     'file' => 'required|mimes:jpeg,png,jpg,gif,pdf|max:20971520',
                     'file1' => 'required|mimes:jpeg,png,jpg,gif,pdf|max:20971520',
                     'file2' => 'required|mimes:jpeg,png,jpg,gif,pdf|max:20971520',
@@ -38,6 +39,12 @@ class ImageUploadController extends Controller
                     'file4' => 'required|mimes:jpeg,png,jpg,gif,pdf|max:20971520',
                     'file6' => 'required|mimes:jpeg,png,jpg,gif,pdf|max:20971520',
                 ]);
+                if ($validator->fails()) {
+                    return back()
+                        ->withErrors($validator)
+                        ->withInput();
+                }
+
                 if ($request->file('file')->isValid()) {
                     $imageName = $appli_id . '_student_aadhar.' . $request->file->extension();
                     $request->file->move(public_path('public/'), $imageName);
@@ -76,14 +83,18 @@ class ImageUploadController extends Controller
             }
             else if($appli_class == 'Grade 2' || $appli_class =='Grade 3' || $appli_class =='Grade 4' || $appli_class =='Grade 5' || $appli_class == 'Grade 6' || $appli_class =='Grade 7' || $appli_class =='Grade 8' || $appli_class =='Grade 9' || $appli_class == 'Grade 11')
             {
-                $request->validate([
+                $validator = Validator::make($request->all(), [
                     'file' => 'required|mimes:jpeg,png,jpg,gif,pdf|max:20971520',
                     'file1' => 'required|mimes:jpeg,png,jpg,gif,pdf|max:20971520',
                     'file2' => 'required|mimes:jpeg,png,jpg,gif,pdf|max:20971520',
                     'file3' => 'required|mimes:jpeg,png,jpg,gif,pdf|max:20971520',
                     'file6' => 'required|mimes:jpeg,png,jpg,gif,pdf|max:20971520',
                 ]);
-            
+                if ($validator->fails()) {
+                    return back()
+                        ->withErrors($validator)
+                        ->withInput();
+                }
                 if ($request->file('file')->isValid()) {
                     $imageName = $appli_id . '_student_aadhar.' . $request->file->extension();
                     $request->file->move(public_path('public/'), $imageName);
@@ -137,9 +148,14 @@ class ImageUploadController extends Controller
             $science_marks_1 = $request->input('science_marks_1');
             $lang2_marks_1 = $request->input('lang2_marks_1');
           
-            $request->validate([
+            $validator = Validator::make($request->all(), [
                 'marksheet_1' => 'required|mimes:jpeg,png,jpg,gif,pdf|max:20971520', 
             ]);
+            if ($validator->fails()) {
+                return back()
+                    ->withErrors($validator)
+                    ->withInput();
+            }
 
             if ($request->file('marksheet_1')->isValid()) {
                 $imageName_1 = $appli_id . 'marksheet_1_' . $request->marksheet_1->extension();
@@ -184,10 +200,15 @@ class ImageUploadController extends Controller
             $science_marks_2 = $request->input('science_marks_2');
             $lang2_marks_2 = $request->input('lang2_marks_2');
            
-            $request->validate([
+            $validator = Validator::make($request->all(), [
                 'marksheet_1' => 'required|mimes:jpeg,png,jpg,gif,pdf|max:20971520', 
                 'marksheet_2' => 'required|mimes:jpeg,png,jpg,gif,pdf|max:20971520', 
             ]);
+            if ($validator->fails()) {
+                return back()
+                    ->withErrors($validator)
+                    ->withInput();
+            }
 
             if ($request->file('marksheet_1')->isValid()) {
                 $imageName_1 = $appli_id . 'marksheet_1_' . $request->marksheet_1->extension();
@@ -263,11 +284,17 @@ class ImageUploadController extends Controller
             $science_marks_3 = $request->input('science_marks_3');
             $lang2_marks_3 = $request->input('lang2_marks_3');
 
-            $request->validate([
+            $validator = Validator::make($request->all(), [
                 'marksheet_1' => 'required|mimes:jpeg,png,jpg,gif,pdf|max:20971520', 
                 'marksheet_2' => 'mimes:jpeg,png,jpg,gif,pdf|max:20971520', 
                 'marksheet_3' => 'mimes:jpeg,png,jpg,gif,pdf|max:20971520', 
             ]);
+            if ($validator->fails()) {
+                return back()
+                    ->withErrors($validator)
+                    ->withInput();
+            }
+
             if ($request->file('marksheet_1')->isValid()) {
                 $imageName_1 = $appli_id . 'marksheet_1_' . $request->marksheet_1->extension();
                 $request->marksheet_1->move(public_path('public/'), $imageName_1);

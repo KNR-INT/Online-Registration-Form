@@ -29,7 +29,9 @@
 <br/>
 <br/>
 <head>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<title>Online Registration</title>
+<link rel="icon" href="https://leap.npsypr.edu.in/uploads/logo.png" type="image/x-icon">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     </head>
 <body style="background-color: #f8f9fa; font-family: Arial, sans-serif;">
@@ -71,12 +73,10 @@
                 <form id="myForm" action="{{ url('store-parent') }}" enctype="multipart/form-data">
                     @csrf
                     @if($errors->any())
-                        <div class="mt-3  alert alert-primary alert-dismissible fade show" role="alert">
-                            <span class="alert-text text-white">
-                            {{$errors->first()}}</span>
-                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
-                                <i class="fa fa-close" aria-hidden="true"></i>
-                            </button>
+                        <div class="mt-3 alert alert-primary alert-dismissible fade show" role="alert">
+                            <span class="alert-text text-black">
+                                {{$errors->first()}}
+                            </span>
                         </div>
                     @endif
                     @if(session('success'))
@@ -1273,6 +1273,27 @@ $("input:checkbox[id='f_details']").on("click", function(){
 <!-- @include('footer') -->
 
 <style>
+
+    .alert {
+        position: relative;
+        padding: 0.75rem;
+        margin-bottom: 1rem;
+        border: 1px solid transparent;
+        border-radius: 0.25rem;
+        width: 50%; /* Adjust the width as needed */
+        margin: 0 auto; /* Centers the alert horizontally */
+    }
+
+    .alert-primary {
+        color: #004085;
+        background-color: #cce5ff;
+        border-color: #b8daff;
+    }
+
+    .btn-close {
+        padding: 0.5rem 0.5rem;
+    }
+
     .circle-container {
 
 justify-content: center;
