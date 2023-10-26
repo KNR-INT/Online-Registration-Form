@@ -633,7 +633,14 @@
                 <div class="col-md-6">
                 <div class="form-group">
                 <div class="input-field">
-                            <label class="form-control-label"><b>Aadhar of the Student*</b></label>
+                            <?php
+                            $class = $_GET['class'];
+                            if($student[0]->class =='Montessori I' || $student[0]->class =='Montessori II' || $student[0]->class == 'Montessori III' || $student[0]->class =='PRE-K' ||$student[0]->class =='Kindergarten I' || $student[0]->class =='Kindergarten II' || $student[0]->class =='Grade 1')
+                            : ?>
+                                 <label class="form-control-label"><b>Aadhar of the Student</b></label>
+                            <?php else: ?>
+                                <label class="form-control-label"><b>Aadhar of the Student*</b></label>
+                            <?php endif; ?>
                             <input class="form-control" type="text" placeholder="XXXX-XXXX-XXXX"  id="aadhar" name="aadhar" value="<?php echo $student[0]->aadhar; ?>" maxlength="14">
                             <span id="aadhar_err" style="color:red;"></span>
                         </div>

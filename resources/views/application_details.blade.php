@@ -748,7 +748,7 @@
                     <table align="left" cellpadding="10" style="margin-left:25px;">
 
                     <tr>
-                    <td><b> Student Photo</b></td>
+                    <td><b> Student's Photo</b></td>
                     <td>
                     @php
                     $fileInfo = pathinfo($student[0]->std_image);
@@ -761,7 +761,7 @@
                         </iframe>
                     @endif
                     </td>
-                    <td  colspan="2"></td>
+                    <!-- <td  colspan="2"></td> -->
 
                     <td><b> Birth Certificate</b></td>
                     <td>
@@ -779,7 +779,41 @@
                     </tr>
                 
                     <tr>
-                    <td><b> Student Aadhar/Passport</b></td>
+                    <td><b> Father's Aadhar card</b></td>
+                    <td> 
+                    @php
+                    $fileInfo = pathinfo($student[0]->father_aadhar);
+                    $fileExtension = isset($fileInfo['extension']) ? $fileInfo['extension'] : null;
+                    @endphp
+                    @if ($fileExtension && in_array($fileExtension, ['jpg', 'jpeg', 'png']))
+                        <img id="blah1" src="{{ asset('public/' . $student[0]->father_aadhar) }}" alt="Image" style="width:150px;height:200px; margin-left:20px;" class="img-fluid img-thumbnail">
+                    @elseif ($fileExtension === 'pdf')
+                        <iframe id="pdfPreview1" src="{{ asset('public/' . $student[0]->father_aadhar) }}" style="width:150px; height:200px; margin-left:50px;">
+                        </iframe>
+                    @endif
+                    </td>
+     
+                    <td><b> Mother's Aadhar card</b></td>
+                    <td>    
+                    @php
+                    $fileInfo = pathinfo($student[0]->mother_aadhar);
+                    $fileExtension = isset($fileInfo['extension']) ? $fileInfo['extension'] : null;
+                    @endphp
+                    @if ($fileExtension && in_array($fileExtension, ['jpg', 'jpeg', 'png']))
+                        <img id="blah3" src="{{ asset('public/' . $student[0]->mother_aadhar) }}" alt="Image" style="width:150px;height:200px; margin-left:20px;" class="img-fluid img-thumbnail">
+                    @elseif ($fileExtension === 'pdf')
+                        <iframe id="pdfPreview3" src="{{ asset('public/' . $student[0]->mother_aadhar) }}" style="width:150px; height:200px; margin-left:50px;">
+                        </iframe>
+                    @endif
+                    </td>
+                    <!-- <td colspan="2"></td> -->
+                    </tr>
+
+                    <?php if($student[0]->class == 'Grade 2' || $student[0]->class == 'Grade 3' || $student[0]->class == 'Grade 4' || $student[0]->class == 'Grade 5' ||$student[0]->class == 'Grade 6' || $student[0]->class == 'Grade 7' || $student[0]->class == 'Grade 8' || $student[0]->class == 'Grade 9' || $student[0]->class == 'Grade 11')
+                    {
+                    ?>
+                    <tr>
+                    <td><b> Student's Aadhar card</b></td>
                     <td> 
                     @php
                     $fileInfo = pathinfo($student[0]->student_adr);
@@ -793,37 +827,9 @@
                     @endif
                     </td>
                     <td colspan="2"></td>
-
-                    <td><b> Father Aadhar</b></td>
-                    <td> 
-                    @php
-                    $fileInfo = pathinfo($student[0]->father_aadhar);
-                    $fileExtension = isset($fileInfo['extension']) ? $fileInfo['extension'] : null;
-                    @endphp
-                    @if ($fileExtension && in_array($fileExtension, ['jpg', 'jpeg', 'png']))
-                        <img id="blah1" src="{{ asset('public/' . $student[0]->father_aadhar) }}" alt="Image" style="width:150px;height:200px; margin-left:20px;" class="img-fluid img-thumbnail">
-                    @elseif ($fileExtension === 'pdf')
-                        <iframe id="pdfPreview1" src="{{ asset('public/' . $student[0]->father_aadhar) }}" style="width:150px; height:200px; margin-left:50px;">
-                        </iframe>
-                    @endif
-                    </td>
-                    </tr>
-     
-                    <tr>
-                    <td><b> Mother Aadhar</b></td>
-                    <td>    
-                    @php
-                    $fileInfo = pathinfo($student[0]->mother_aadhar);
-                    $fileExtension = isset($fileInfo['extension']) ? $fileInfo['extension'] : null;
-                    @endphp
-                    @if ($fileExtension && in_array($fileExtension, ['jpg', 'jpeg', 'png']))
-                        <img id="blah3" src="{{ asset('public/' . $student[0]->mother_aadhar) }}" alt="Image" style="width:150px;height:200px; margin-left:20px;" class="img-fluid img-thumbnail">
-                    @elseif ($fileExtension === 'pdf')
-                        <iframe id="pdfPreview3" src="{{ asset('public/' . $student[0]->mother_aadhar) }}" style="width:150px; height:200px; margin-left:50px;">
-                        </iframe>
-                    @endif
-                    </td>
-                    <td colspan="2"></td>
+                    <?php
+                    }
+                    ?>
 
                     <?php if($student[0]->class =='Montessori I' || $student[0]->class =='Montessori II' || $student[0]->class == 'Montessori III' || $student[0]->class =='PRE-K' ||$student[0]->class =='Kindergarten I' || $student[0]->class =='Kindergarten II')
                     {

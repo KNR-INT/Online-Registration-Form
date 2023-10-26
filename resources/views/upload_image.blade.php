@@ -76,7 +76,14 @@
                             $id = $_GET['appli_id'];
                             $student = DB::select("SELECT * FROM `students` WHERE `id` = '$id'");
                             ?>
-                            <label class="form-control-label"><b>Upload Student's Aadhar card * :</b></label>
+                            <?php
+                            $class = $_GET['class'];
+                            if($student[0]->class =='Montessori I' || $student[0]->class =='Montessori II' || $student[0]->class == 'Montessori III' || $student[0]->class =='PRE-K' ||$student[0]->class =='Kindergarten I' || $student[0]->class =='Kindergarten II' || $student[0]->class =='Grade 1')
+                            : ?>
+                                 <label class="form-control-label"><b>Upload Student's Aadhar card :</b></label>
+                            <?php else: ?>
+                                <label class="form-control-label"><b>Upload Student's Aadhar card* :</b></label>
+                            <?php endif; ?>
                             <input class="form-control" type="file" id="Student_Aadhar_card" name="file" accept=".jpg, .jpeg, .png, .pdf" onchange="preview()" value="{{ $student[0]->student_adr }}">
 
                    @if($student[0]->student_adr) 
@@ -1475,20 +1482,20 @@ document.getElementById('myForm').addEventListener('submit', function(e) {
             else if(appli_class =='Montessori I' || appli_class == 'PRE-K' || appli_class =='Montessori II' || appli_class == 'Montessori III' || appli_class =='Kindergarten I' || appli_class =='Kindergarten II' || appli_class =='Grade 1')
             {
             let immunization_card = document.getElementById("immunization_card").value;
-                if( !std_image || !Student_Aadhar_card || !Fathers_Aadhar_card || !Birth_Certificate_Of_Student || !Mothers_Aadhar_card || !immunization_card)
+                if( !std_image  || !Fathers_Aadhar_card || !Birth_Certificate_Of_Student || !Mothers_Aadhar_card || !immunization_card)
                 {
-                    if(!std_image || !Student_Aadhar_card || !Fathers_Aadhar_card || !Birth_Certificate_Of_Student || !Mothers_Aadhar_card || !immunization_card )
+                    if(!std_image || !Fathers_Aadhar_card || !Birth_Certificate_Of_Student || !Mothers_Aadhar_card || !immunization_card )
                     {
                          alert("Kindly Upload the Documents");
                     }
-                    if(!Student_Aadhar_card)
-                    {
-                        document.getElementById("Student_Aadhar_card_err").innerHTML = "This is Required Field";
-                    }
-                    else
-                    {
-                        document.getElementById("Student_Aadhar_card_err").innerHTML = " ";
-                    }
+                    // if(!Student_Aadhar_card)
+                    // {
+                    //     document.getElementById("Student_Aadhar_card_err").innerHTML = "This is Required Field";
+                    // }
+                    // else
+                    // {
+                    //     document.getElementById("Student_Aadhar_card_err").innerHTML = " ";
+                    // }
                     if(!std_image)
                     {
                         document.getElementById("std_image_err").innerHTML = "This is Required Field";

@@ -32,7 +32,7 @@ class ImageUploadController extends Controller
             if($appli_class == "PRE-K" || $appli_class == "Montessori I" || $appli_class == "Montessori II"|| $appli_class == "Montessori III"|| $appli_class == "Kindergarten I"|| $appli_class == "Kindergarten II" || $appli_class == "Grade 1")
             {
                 $validator = Validator::make($request->all(), [
-                    'file' => 'required|mimes:jpeg,png,jpg,gif,pdf|max:20971520',
+                    'file' =>  'mimes:jpeg,png,jpg,gif,pdf|max:20971520',
                     'file1' => 'required|mimes:jpeg,png,jpg,gif,pdf|max:20971520',
                     'file2' => 'required|mimes:jpeg,png,jpg,gif,pdf|max:20971520',
                     'file3' => 'required|mimes:jpeg,png,jpg,gif,pdf|max:20971520',
@@ -45,7 +45,7 @@ class ImageUploadController extends Controller
                         ->withInput();
                 }
 
-                if ($request->file('file')->isValid()) {
+                if ($request->file('file')) {
                     $imageName = $appli_id . '_student_aadhar.' . $request->file->extension();
                     $request->file->move(public_path('public/'), $imageName);
                     
