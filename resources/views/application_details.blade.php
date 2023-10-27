@@ -831,7 +831,7 @@
                     }
                     ?>
 
-                    <?php if($student[0]->class =='Montessori I' || $student[0]->class =='Montessori II' || $student[0]->class == 'Montessori III' || $student[0]->class =='PRE-K' ||$student[0]->class =='Kindergarten I' || $student[0]->class =='Kindergarten II')
+                    <?php if($student[0]->class =='Montessori I' || $student[0]->class =='Montessori II' || $student[0]->class == 'Montessori III' || $student[0]->class =='PRE-K' ||$student[0]->class =='Kindergarten I' || $student[0]->class =='Kindergarten II' || $student[0]->class =='Grade 1')
                     {
                     ?>
                     <td><b> Immunization Card</b></td>

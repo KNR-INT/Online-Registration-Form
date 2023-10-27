@@ -385,7 +385,6 @@ class CustomAuthController extends Controller
         ->where('user_id', $ses_userid)
         ->whereNotNull('name')
         ->get();
-
         return view('draft', compact('student'));
         }
     }
@@ -398,7 +397,7 @@ class CustomAuthController extends Controller
         else{
         $sessions = request()->session()->get('users.user_id');
         $ses_userid = $sessions[0];
-        $student = DB::select("SELECT * FROM `students` WHERE `status` = 'Submitted ' AND `user_id` = '$ses_userid'");
+        $student = DB::select("SELECT * FROM `students` WHERE `status` LIKE 'Submitted' AND `user_id` = '$ses_userid'");
         return view('submited ', compact('student'));
      }
     }

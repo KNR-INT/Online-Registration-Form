@@ -135,7 +135,7 @@
                 <div class="input-field">
                 <label  class="form-control-label" ><b>Upload Father's Aadhar card * :</b></label>
                    
-                    <input class="form-control" type="file" id="Fathers_Aadhar_card" name="file1" accept=".jpg, .jpeg, .png, .pdf" onchange="preview1()" value="{{ $student[0]->father_aadhar }}">
+                    <input class="form-control" type="file" id="Fathers_Aadhar_card" name="file2" accept=".jpg, .jpeg, .png, .pdf" onchange="preview1()" value="{{ $student[0]->father_aadhar }}">
          @if($student[0]->father_aadhar)
                          @php
                         $fileExtension = pathinfo($student[0]->father_aadhar)['extension'];
@@ -160,7 +160,7 @@
                 <div class="input-field">
                 <label class="form-control-label"><b> Birth Certificate Of Student * :</b></label>
                
-                <input class="form-control" type="file" id="Birth_Certificate_Of_Student" name="file2" accept=".jpg, .jpeg, .png, .pdf" onchange="preview2()" value="{{ $student[0]->birth_cer }}">
+                <input class="form-control" type="file" id="Birth_Certificate_Of_Student" name="file1" accept=".jpg, .jpeg, .png, .pdf" onchange="preview2()" value="{{ $student[0]->birth_cer }}">
          @if($student[0]->birth_cer)
                          @php
                         $fileExtension = pathinfo($student[0]->birth_cer)['extension'];
@@ -351,7 +351,7 @@
 
             <div class="row">
             <div class="col-md-6">
-                <div><b>Please Enter the marks secured in Mid term Examination:</b> </div>
+                <div><b>Please Enter the marks secured in Final term Examination:</b> </div>
             </div>
             </div>
             <br/>
@@ -449,7 +449,7 @@
 
             <div class="row">
             <div class="col-md-6">
-                <div><b>Please Enter the marks secured in Final term Examination</b></div>
+                <div><b>Please Enter the marks secured in Mid term Examination</b></div>
             </div>
             </div>
             <br/>
@@ -695,7 +695,7 @@
 
             <div class="row">
             <div class="col-md-6">
-                <div><b>Please Enter the marks secured in Mid term Examination:</b> </div>
+                <div><b>Please Enter the marks secured in Final term Examination:</b> </div>
             </div>
             </div>
             <br/>
@@ -793,7 +793,7 @@
 
             <div class="row">
             <div class="col-md-6">
-                <div><b>Please Enter the marks secured in Final term Examination</b></div>
+                <div><b>Please Enter the marks secured in Mid term Examination</b></div>
             </div>
             </div>
             <br/>

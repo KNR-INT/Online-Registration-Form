@@ -635,7 +635,7 @@
                 <div class="input-field">
                             <?php
                             $class = $_GET['class'];
-                            if($student[0]->class =='Montessori I' || $student[0]->class =='Montessori II' || $student[0]->class == 'Montessori III' || $student[0]->class =='PRE-K' ||$student[0]->class =='Kindergarten I' || $student[0]->class =='Kindergarten II' || $student[0]->class =='Grade 1')
+                            if($student[0]->link_class == "mont" || $student[0]->link_class == "kinder" || $student[0]->class =='Grade 1')
                             : ?>
                                  <label class="form-control-label"><b>Aadhar of the Student</b></label>
                             <?php else: ?>
