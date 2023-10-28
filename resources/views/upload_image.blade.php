@@ -38,10 +38,12 @@
                 <form id="myForm" action="{{ url('storeImage') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @if($errors->any())
-                        <div class="mt-3 alert alert-primary alert-dismissible fade show" role="alert">
-                            <span class="alert-text text-black">
-                                {{$errors->first()}}
-                            </span>
+                        <div class="mt-3  alert alert-primary alert-dismissible fade show" role="alert">
+                            <span class="alert-text text-white">
+                            {{$errors->first()}}</span>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                                <i class="fa fa-close" aria-hidden="true"></i>
+                            </button>
                         </div>
                     @endif
                     @if(session('success'))
@@ -76,14 +78,7 @@
                             $id = $_GET['appli_id'];
                             $student = DB::select("SELECT * FROM `students` WHERE `id` = '$id'");
                             ?>
-                            <?php
-                            $class = $_GET['class'];
-                            if($student[0]->class =='Montessori I' || $student[0]->class =='Montessori II' || $student[0]->class == 'Montessori III' || $student[0]->class =='PRE-K' ||$student[0]->class =='Kindergarten I' || $student[0]->class =='Kindergarten II' || $student[0]->class =='Grade 1')
-                            : ?>
-                                 <label class="form-control-label"><b>Upload Student's Aadhar card :</b></label>
-                            <?php else: ?>
-                                <label class="form-control-label"><b>Upload Student's Aadhar card* :</b></label>
-                            <?php endif; ?>
+                            <label class="form-control-label"><b>Upload Student's Aadhar card * :</b></label>
                             <input class="form-control" type="file" id="Student_Aadhar_card" name="file" accept=".jpg, .jpeg, .png, .pdf" onchange="preview()" value="{{ $student[0]->student_adr }}">
 
                    @if($student[0]->student_adr) 
@@ -135,7 +130,7 @@
                 <div class="input-field">
                 <label  class="form-control-label" ><b>Upload Father's Aadhar card * :</b></label>
                    
-                    <input class="form-control" type="file" id="Fathers_Aadhar_card" name="file2" accept=".jpg, .jpeg, .png, .pdf" onchange="preview1()" value="{{ $student[0]->father_aadhar }}">
+                    <input class="form-control" type="file" id="Fathers_Aadhar_card" name="file1" accept=".jpg, .jpeg, .png, .pdf" onchange="preview1()" value="{{ $student[0]->father_aadhar }}">
          @if($student[0]->father_aadhar)
                          @php
                         $fileExtension = pathinfo($student[0]->father_aadhar)['extension'];
@@ -160,7 +155,7 @@
                 <div class="input-field">
                 <label class="form-control-label"><b> Birth Certificate Of Student * :</b></label>
                
-                <input class="form-control" type="file" id="Birth_Certificate_Of_Student" name="file1" accept=".jpg, .jpeg, .png, .pdf" onchange="preview2()" value="{{ $student[0]->birth_cer }}">
+                <input class="form-control" type="file" id="Birth_Certificate_Of_Student" name="file2" accept=".jpg, .jpeg, .png, .pdf" onchange="preview2()" value="{{ $student[0]->birth_cer }}">
          @if($student[0]->birth_cer)
                          @php
                         $fileExtension = pathinfo($student[0]->birth_cer)['extension'];
@@ -278,12 +273,10 @@
             ?>
             <center> <header><b><u><h3>Details of Schooling</h3></u></b></header></center>
             <div class="col-md-2 ml-auto">
-        <!-- <button id="btn" type="button" class="btn btn-outline-primary add-row form-control" <?php 
-        // if($users_id[0]->rec_id > 2){ echo "disabled";} 
-        ?>>Add</button>-->
+        <button id="btn" type="button" class="btn btn-outline-primary add-row form-control" <?php if($users_id[0]->rec_id > 2){ echo "disabled";} ?>>Add</button>
 
-        <input type="hidden" id="old_school_value" name="old_school_value" value="2">
-    </div> 
+        <input type="hidden" id="old_school_value" name="old_school_value" value="<?php echo $users_id[0]->rec_id - 1; ?>">
+    </div>
                 <br>
        <?php 
         if($users_id[0]->rec_id == "3")
@@ -351,7 +344,7 @@
 
             <div class="row">
             <div class="col-md-6">
-                <div><b>Please Enter the marks secured in Final term Examination:</b> </div>
+                <div><b>Please Enter the marks secured in Mid term Examination:</b> </div>
             </div>
             </div>
             <br/>
@@ -449,7 +442,7 @@
 
             <div class="row">
             <div class="col-md-6">
-                <div><b>Please Enter the marks secured in Mid term Examination</b></div>
+                <div><b>Please Enter the marks secured in Final term Examination</b></div>
             </div>
             </div>
             <br/>
@@ -501,11 +494,9 @@
                     <div class="col-md-3">
                     </div>
 
-                    <!-- <div class="col-md-3">
-                        <button id="btn_1" type="button" class="btn btn-outline-primary remove-row-1 form-control" <?php 
-                        // if($users_id[0]->rec_id > 2){ echo "disabled";} 
-                        ?>>Remove</button>
-                    </div> -->
+                    <div class="col-md-3">
+                        <button id="btn_1" type="button" class="btn btn-outline-primary remove-row-1 form-control" <?php if($users_id[0]->rec_id > 2){ echo "disabled";} ?>>Remove</button>
+                    </div>
 
                     </div>
                     </div>
@@ -613,9 +604,9 @@
                     <div class="col-md-3">
                     </div>
 
-                    <!-- <div class="col-md-3">
+                    <div class="col-md-3">
                         <button id="btn_2" type="button" class="btn btn-outline-primary remove-row-2 form-control">Remove</button>
-                    </div> -->
+                    </div>
 
                     </div>
                     </div>
@@ -642,8 +633,9 @@
               ?>
                 <center> <header><b><u><h3>Details of Schooling</h3></u></b></header></center>
                 <div class="col-md-2 ml-auto">
-        <input type="hidden" id="old_school_value" name="old_school_value" value="2">
-    </div> 
+        <button id="btn" type="button" class="btn btn-outline-primary add-row form-control">Add</button>
+        <input type="hidden" id="old_school_value" name="old_school_value" value="0">
+    </div>
                 <br>
        
     <div class="row">
@@ -695,7 +687,7 @@
 
             <div class="row">
             <div class="col-md-6">
-                <div><b>Please Enter the marks secured in Final term Examination:</b> </div>
+                <div><b>Please Enter the marks secured in Mid term Examination:</b> </div>
             </div>
             </div>
             <br/>
@@ -743,6 +735,7 @@
                     </div>
                     </div>
                     
+                    <div class="school_1" hidden>
                     <hr>
                     <div class="row">
         <div class="col-md-3"> <b>Academic Year
@@ -793,7 +786,7 @@
 
             <div class="row">
             <div class="col-md-6">
-                <div><b>Please Enter the marks secured in Mid term Examination</b></div>
+                <div><b>Please Enter the marks secured in Final term Examination</b></div>
             </div>
             </div>
             <br/>
@@ -846,10 +839,14 @@
                     <div class="col-md-3">
                     </div>
 
+                    <div class="col-md-3">
+                        <button id="btn_1" type="button" class="btn btn-outline-primary remove-row-1 form-control">Remove</button>
+                    </div>
+
                     </div>
                     </div>
 
-                <div style="margin-left:15px; margin-right:15px; margin-top:-25px; margin-bottom:10px;">
+                    <div class="school_2" hidden>
                     <hr>
                     <div class="row">
         <div class="col-md-3"> <b>Academic Year
@@ -953,14 +950,12 @@
                     <div class="col-md-3">
                     </div>
 
-                    <!-- <div class="col-md-3">
+                    <div class="col-md-3">
                         <button id="btn_2" type="button" class="btn btn-outline-primary remove-row-2 form-control">Remove</button>
-                    </div> -->
+                    </div>
 
                     </div>
                     </div>
-                    </div>
-                    
 <?php
 }
                     }
@@ -1482,20 +1477,20 @@ document.getElementById('myForm').addEventListener('submit', function(e) {
             else if(appli_class =='Montessori I' || appli_class == 'PRE-K' || appli_class =='Montessori II' || appli_class == 'Montessori III' || appli_class =='Kindergarten I' || appli_class =='Kindergarten II' || appli_class =='Grade 1')
             {
             let immunization_card = document.getElementById("immunization_card").value;
-                if( !std_image  || !Fathers_Aadhar_card || !Birth_Certificate_Of_Student || !Mothers_Aadhar_card || !immunization_card)
+                if( !std_image || !Student_Aadhar_card || !Fathers_Aadhar_card || !Birth_Certificate_Of_Student || !Mothers_Aadhar_card || !immunization_card)
                 {
-                    if(!std_image || !Fathers_Aadhar_card || !Birth_Certificate_Of_Student || !Mothers_Aadhar_card || !immunization_card )
+                    if(!std_image || !Student_Aadhar_card || !Fathers_Aadhar_card || !Birth_Certificate_Of_Student || !Mothers_Aadhar_card || !immunization_card )
                     {
                          alert("Kindly Upload the Documents");
                     }
-                    // if(!Student_Aadhar_card)
-                    // {
-                    //     document.getElementById("Student_Aadhar_card_err").innerHTML = "This is Required Field";
-                    // }
-                    // else
-                    // {
-                    //     document.getElementById("Student_Aadhar_card_err").innerHTML = " ";
-                    // }
+                    if(!Student_Aadhar_card)
+                    {
+                        document.getElementById("Student_Aadhar_card_err").innerHTML = "This is Required Field";
+                    }
+                    else
+                    {
+                        document.getElementById("Student_Aadhar_card_err").innerHTML = " ";
+                    }
                     if(!std_image)
                     {
                         document.getElementById("std_image_err").innerHTML = "This is Required Field";
@@ -1553,27 +1548,6 @@ document.getElementById('myForm').addEventListener('submit', function(e) {
 @include('footer')
 
 <style>
-
-    .alert {
-        position: relative;
-        padding: 0.75rem;
-        margin-bottom: 1rem;
-        border: 1px solid transparent;
-        border-radius: 0.25rem;
-        width: 50%; /* Adjust the width as needed */
-        margin: 0 auto; /* Centers the alert horizontally */
-    }
-
-    .alert-primary {
-        color: #004085;
-        background-color: #cce5ff;
-        border-color: #b8daff;
-    }
-
-    .btn-close {
-        padding: 0.5rem 0.5rem;
-    }
-
     .circle-container {
 
 justify-content: center;
