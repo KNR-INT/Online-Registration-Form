@@ -398,7 +398,7 @@ class CustomAuthController extends Controller
         $sessions = request()->session()->get('users.user_id');
         $ses_userid = $sessions[0];
         $student = DB::select("SELECT * FROM `students` WHERE `status` LIKE 'Submitted' AND `user_id` = '$ses_userid'");
-        return view('submited ', compact('student'));
+        return view('submited', compact('student'));
      }
     }
 

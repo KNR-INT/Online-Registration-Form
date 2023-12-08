@@ -202,7 +202,7 @@ class ImageUploadController extends Controller
            
             $validator = Validator::make($request->all(), [
                 'marksheet_1' => 'required|mimes:jpeg,png,jpg,gif,pdf|max:20971520', 
-                'marksheet_2' => 'required|mimes:jpeg,png,jpg,gif,pdf|max:20971520', 
+                'marksheet_2' => 'mimes:jpeg,png,jpg,gif,pdf|max:20971520', 
             ]);
             if ($validator->fails()) {
                 return back()
@@ -214,7 +214,7 @@ class ImageUploadController extends Controller
                 $imageName_1 = $appli_id . 'marksheet_1_' . $request->marksheet_1->extension();
                 $request->marksheet_1->move(public_path('public/'), $imageName_1);
             }
-            if ($request->file('marksheet_2')->isValid()) {
+            if ($request->file('marksheet_2')) {
                 $imageName_2 = $appli_id . 'marksheet_2_' . $request->marksheet_2->extension();
                 $request->marksheet_2->move(public_path('public/'), $imageName_2);
             }

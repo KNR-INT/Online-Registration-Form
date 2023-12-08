@@ -38,12 +38,10 @@
                 <form id="myForm" action="{{ url('storeImage') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @if($errors->any())
-                        <div class="mt-3  alert alert-primary alert-dismissible fade show" role="alert">
-                            <span class="alert-text text-white">
-                            {{$errors->first()}}</span>
-                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
-                                <i class="fa fa-close" aria-hidden="true"></i>
-                            </button>
+                        <div class="mt-3 alert alert-primary alert-dismissible fade show" role="alert">
+                            <span class="alert-text text-black">
+                                {{$errors->first()}}
+                            </span>
                         </div>
                     @endif
                     @if(session('success'))
@@ -130,7 +128,7 @@
                 <div class="input-field">
                 <label  class="form-control-label" ><b>Upload Father's Aadhar card * :</b></label>
                    
-                    <input class="form-control" type="file" id="Fathers_Aadhar_card" name="file1" accept=".jpg, .jpeg, .png, .pdf" onchange="preview1()" value="{{ $student[0]->father_aadhar }}">
+                    <input class="form-control" type="file" id="Fathers_Aadhar_card" name="file2" accept=".jpg, .jpeg, .png, .pdf" onchange="preview1()" value="{{ $student[0]->father_aadhar }}">
          @if($student[0]->father_aadhar)
                          @php
                         $fileExtension = pathinfo($student[0]->father_aadhar)['extension'];
@@ -155,7 +153,7 @@
                 <div class="input-field">
                 <label class="form-control-label"><b> Birth Certificate Of Student * :</b></label>
                
-                <input class="form-control" type="file" id="Birth_Certificate_Of_Student" name="file2" accept=".jpg, .jpeg, .png, .pdf" onchange="preview2()" value="{{ $student[0]->birth_cer }}">
+                <input class="form-control" type="file" id="Birth_Certificate_Of_Student" name="file1" accept=".jpg, .jpeg, .png, .pdf" onchange="preview2()" value="{{ $student[0]->birth_cer }}">
          @if($student[0]->birth_cer)
                          @php
                         $fileExtension = pathinfo($student[0]->birth_cer)['extension'];
@@ -344,7 +342,7 @@
 
             <div class="row">
             <div class="col-md-6">
-                <div><b>Please Enter the marks secured in Mid term Examination:</b> </div>
+                <div><b>Please Enter the marks secured in Final term Examination:</b> </div>
             </div>
             </div>
             <br/>
@@ -395,8 +393,8 @@
                     <hr>
                     <div class="row">
         <div class="col-md-3"> <b>Academic Year
-        <?php if(!empty($rec_2)){ echo $rec_2[0]->academic_year; }else{ echo $academic_2;} ?></b>
-            <input type="hidden" id="academic_2" name="academic_2" value="<?php if(!empty($rec_2)){ echo $rec_2[0]->academic_year; }else{ echo $academic_2;} ?>">
+        <?php if(!empty($rec_2)){ echo $rec_2[0]->academic_year; }else{ echo $academic_1;} ?></b>
+            <input type="hidden" id="academic_2" name="academic_2" value="<?php if(!empty($rec_2)){ echo $rec_2[0]->academic_year; }else{ echo $academic_1;} ?>">
             </div>
             </div>
             <br>
@@ -442,7 +440,7 @@
 
             <div class="row">
             <div class="col-md-6">
-                <div><b>Please Enter the marks secured in Final term Examination</b></div>
+                <div><b>Please Enter the marks secured in Mid term Examination</b></div>
             </div>
             </div>
             <br/>
@@ -687,7 +685,7 @@
 
             <div class="row">
             <div class="col-md-6">
-                <div><b>Please Enter the marks secured in Mid term Examination:</b> </div>
+                <div><b>Please Enter the marks secured in Final term Examination:</b> </div>
             </div>
             </div>
             <br/>
@@ -786,7 +784,7 @@
 
             <div class="row">
             <div class="col-md-6">
-                <div><b>Please Enter the marks secured in Final term Examination</b></div>
+                <div><b>Please Enter the marks secured in Mid term Examination</b></div>
             </div>
             </div>
             <br/>
@@ -1548,6 +1546,27 @@ document.getElementById('myForm').addEventListener('submit', function(e) {
 @include('footer')
 
 <style>
+
+.alert {
+position: relative;
+padding: 0.75rem;
+margin-bottom: 1rem;
+border: 1px solid transparent;
+border-radius: 0.25rem;
+width: 50%; /* Adjust the width as needed */
+margin: 0 auto; /* Centers the alert horizontally */
+}
+
+.alert-primary {
+color: #004085;
+background-color: #cce5ff;
+border-color: #b8daff;
+}
+
+.btn-close {
+padding: 0.5rem 0.5rem;
+}
+
     .circle-container {
 
 justify-content: center;

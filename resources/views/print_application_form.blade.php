@@ -39,13 +39,13 @@
                                     $class = $student[0]->class;
                                     if($student[0]->class =='Montessori I' || $student[0]->class =='Montessori II' || $student[0]->class == 'Montessori III')
                                     {
-                                        $path = 'http://ec2-204-236-192-144.compute-1.amazonaws.com/leap-sms-ifive/uploads_backup/logo.png';
+                                        $path = 'https://leap-i5.npsypr.edu.in/uploads/logo.png';
                                         $type = pathinfo($path, PATHINFO_EXTENSION);
                                         $data = file_get_contents($path);
                                         $base64 = 'data:image/' . $type . ';base64,' . base64_encode($data);
                                     }
                                     else {
-                                        $path = 'http://ec2-204-236-192-144.compute-1.amazonaws.com/leap-sms/uploads_backup/logo.png';
+                                        $path = 'https://leap.npsypr.edu.in/uploads/logo.png';
                                         $type = pathinfo($path, PATHINFO_EXTENSION);
                                         $data = file_get_contents($path);
                                         $base64 = 'data:image/' . $type . ';base64,' . base64_encode($data);

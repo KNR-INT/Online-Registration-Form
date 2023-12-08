@@ -101,13 +101,13 @@
                                     $class = $student[0]->class;
                                     if($student[0]->class =='Montessori I' || $student[0]->class =='Montessori II' || $student[0]->class == 'Montessori III')
                                     {
-                                        $path = 'http://ec2-204-236-192-144.compute-1.amazonaws.com/leap-sms-ifive/uploads_backup/logo.png';
+                                        $path = 'https://leap-i5.npsypr.edu.in/uploads/logo.png';
                                         $type = pathinfo($path, PATHINFO_EXTENSION);
                                         $data = file_get_contents($path);
                                         $base64 = 'data:image/' . $type . ';base64,' . base64_encode($data);
                                     }
                                     else {
-                                        $path = 'http://ec2-204-236-192-144.compute-1.amazonaws.com/leap-sms/uploads_backup/logo.png';
+                                        $path = 'https://leap.npsypr.edu.in/uploads/logo.png';
                                         $type = pathinfo($path, PATHINFO_EXTENSION);
                                         $data = file_get_contents($path);
                                         $base64 = 'data:image/' . $type . ';base64,' . base64_encode($data);
@@ -252,8 +252,9 @@
                                                         
                                         <tr>
                                             <td style="text-align: center;border-left: none;border-top: 1px solid black;font-size: 13px;padding-top:2px;">1</td>
-                                            <td style="text-align: left;padding-left: 3px;border-left: 1px solid black;border-top: 1px solid black;font-size: 13px;padding-top:2px;">Appication Fee</td>
-                                            <td style="text-align: right;padding-right: 3px;border-left: 1px solid black;border-top: 1px solid black;font-size: 13px;padding-top:2px;"><?php echo $fee_receipt[0]->txn_amount; ?></td>
+                                            <td style="text-align: left;padding-left: 3px;border-left: 1px solid black;border-top: 1px solid black;font-size: 13px;padding-top:2px;">Application Fee</td>
+                                            <td style="text-align: right;padding-right: 3px;border-left: 1px solid black;border-top: 1px solid black;font-size: 13px;padding-top:2px;">
+                                            <?php echo $fee_receipt[0]->txn_amount; ?></td>
                                         </tr>
                                         <tr>
                                             <td style="text-align:right;padding-right: 3px;border-right: 1px solid black;border-top: 1px solid black;font-size: 13px;padding-top:2px;" colspan ="2"> Total (INR)</td>
