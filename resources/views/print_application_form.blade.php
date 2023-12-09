@@ -251,7 +251,7 @@
 
            <tr>
                <th colspan="1" style="text-align: left;">Father's Qualification</th>
-               <td colspan="2" style="text-align: left;"><?php echo $student[0]->mother_graduation ?></td>
+               <td colspan="2" style="text-align: left;"><?php echo $student[0]->father_graduation ?></td>
                <th colspan="1" style="text-align: left;">Mother's Qualification</th>
                <td colspan="2" style="text-align: left;"><?php echo $student[0]->mother_graduation ?></td>
            </tr>
