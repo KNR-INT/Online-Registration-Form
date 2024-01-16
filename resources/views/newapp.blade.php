@@ -106,6 +106,9 @@
  
     
     <div class="container">
+    <div class="justify-content-center">
+            <h2><b>APPLYING FOR</b></h2>
+        </div>
         <div class="row justify-content-center">
         <?php 
             // echo($row->name);

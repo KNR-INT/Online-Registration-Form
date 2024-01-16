@@ -106,7 +106,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                             <div class="input-field">
-                            <label class="form-control-label"><b> Class*</b></label>
+                            <label class="form-control-label"><b> Class applying for*</b></label>
                         <input type="hidden" id="class_old" name="class_old" value="<?php if(!empty($student[0]->class)) { echo $student[0]->class; } ?>">
                             <select  class="form-control" id="class" name="class">
                                 <option disabled selected value="">--SELECT--</option>
