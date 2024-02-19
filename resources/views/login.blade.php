@@ -136,10 +136,16 @@
         <div class="card-header">
                     <!-- <div class="user-panel"> -->
             <div>
-                <img src="{{ asset('public/Image/NPS_logo.png') }}" class="logo" alt="Logo">
+                <?php
+                $school_details = DB::connection('secondary')->table('schooldetails')->get();
+                // print_r($school_details);
+                $school_logo = $school_details[0]->schoollogo;
+                $base_url = $school_details[0]->base_url;
+                echo '<img src="'.$base_url.$school_logo.'" class="logo" alt="Logo">'
+                ?>
             </div><br/>
             <div class="card-body">
-                <h1>National Public School</h1>
+                <h1><?php echo $school_details[0]->schoolname ?></h1>
                 <h3>Online Registration</h3>
             </div>
             <!-- </div> -->
