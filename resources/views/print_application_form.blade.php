@@ -67,7 +67,7 @@
                                     <center><b>NATIONAL PUBLIC SCHOOL - YESHWANTHPUR</b></center>
                                     <?php endif; ?>
                                     <br>
-                                    <h5 style="margin-top:-10px">APPLICATION FOR REGISTRATION</h5>
+                                    <h5 style="margin-top:-10px">APPLICATION FOR REGISTRATION </h5>
                 </td>
             <td colspan="3" style="border: none; text-align: right;">
                 <h5><?php echo $student[0]->application_no;?></h5>
