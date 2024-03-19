@@ -1,22 +1,28 @@
 <!DOCTYPE html>
 <html>
+<?php 
+$school_details = DB::connection('secondary')->table('schooldetails')->get();
+$school_logo = $school_details[0]->schoollogo;
+$base_url = $school_details[0]->base_url;
+$school_logo_url = $base_url . $school_logo;
+?>
 <body style="justify-content: center;">
     <div style="font-family: Helvetica,Arial,sans-serif;min-width:1000px;line-height:2">
         <div style="margin:50px auto;width:70%;padding:20px 0">
         <div class="container-fluid" style="display: flex; align-items: center;">
-        <img src="https://leap.npsypr.edu.in/uploads/logo.png" alt="Npsypr" style="width: 80px; height: 80px;">
+        <img src="leapknr-demo-school.knrint.com/uploads_backup/KNR_LOGO_TM.jpg" alt="KNR" style="width: 80px; height: 80px;">
         </div>
         <p style="font-size:1.1em"><b>Dear Parent</b><br> </p>
         <p style="font-size:1.1em">
-        Greetings from National Public School Yeshwanthpur!<br>
+        Greetings from <?php echo $school_details[0]->schoolname ?>!<br>
         Use the following OTP to complete your Sign Up procedures. OTP is valid for 1 minute. 
         <br>
         OTP : {{ $otp_number }} <br>
-        Incase of any issues please email to admissions@npsypr.edu.in
+        Incase of any issues please email to knrintind@gmail.com
         </p>
         <p style="font-size:1.1em">Regards,<br>
         Administration (Admissions Department)<br>
-        National Public School, Yeshwanthpur</p>        
+        <?php echo $school_details[0]->schoolname ?></p>        
         </div>
         <hr>
         <div>

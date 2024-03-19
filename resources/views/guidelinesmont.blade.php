@@ -22,11 +22,11 @@
         <br>
          <h3><b>ADMISSIONS</b></h3>
         <br>
-        <p>Welcome to National Public School, Yeshwanthpur. </p>
+        <p>Welcome to KNR.</p>
 
         <p>We are an educational institution that prepares students for a rapidly changing world by nurturing the required skill sets, instilling a global perspective and inculcating core values of respect, honesty, loyalty, perseverance and compassion. </p>
         
-        <p>Admission to National Public School, Yeshwanthpur, is open to all children from Montessori (I-5 Academy), Pre-K, Kindergarten and Classes 1 to 9 & 11.</p>
+        <p>Admission to KNR, is open to all children from Montessori (I-5 Academy), Pre-K, Kindergarten and Classes 1 to 9 & 11.</p>
     
         <h5><b>Kindly note the age criteria as on 1st June 2024:</b></h5>
         <ul>
@@ -82,7 +82,7 @@
             <br/>
             Phone: +91-080-23571220 / 29501184<br/>
             +91-6364071122  <br/>
-            Email:admissions@npsypr.edu.in<p>
+            Email:knrintind@gmail.com<p>
 
             <div class="icheck-primary d-inline">
             <input type='checkbox'  id="checkbox" name = "checkbox"> 

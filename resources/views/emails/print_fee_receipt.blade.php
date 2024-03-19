@@ -198,7 +198,7 @@ if (!empty($fee_receipt[0])) {
                         <td>This is an electronically generated receipt, hence no signature required.</td>
                     </tr>
                     <tr>
-                        <td style="font-size: 9px;">© 2013 - 2023 by NPS Yeshwanthpur.</td>
+                        <td style="font-size: 9px;">© 2013 - 2023 by KNR.</td>
                     </tr>
                 </tbody>
             </table>

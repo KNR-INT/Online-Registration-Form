@@ -7,6 +7,12 @@
     </style>
  <body style="font-family: Times New Roman, serif;">
 
+                <?php 
+                    $school_details = DB::connection('secondary')->table('schooldetails')->get();
+                    $school_logo = $school_details[0]->schoollogo;
+                    $base_url = $school_details[0]->base_url;
+                    $school_logo_url = $base_url . $school_logo;
+                ?>
                         <?php    
                         if(!empty($appli_id))
                             {
@@ -39,13 +45,13 @@
                                     $class = $student[0]->class;
                                     if($student[0]->class =='Montessori I' || $student[0]->class =='Montessori II' || $student[0]->class == 'Montessori III')
                                     {
-                                        $path = 'https://leap-i5.npsypr.edu.in/uploads/logo.png';
+                                        $path = $school_logo_url;
                                         $type = pathinfo($path, PATHINFO_EXTENSION);
                                         $data = file_get_contents($path);
                                         $base64 = 'data:image/' . $type . ';base64,' . base64_encode($data);
                                     }
                                     else {
-                                        $path = 'https://leap.npsypr.edu.in/uploads/logo.png';
+                                        $path = $school_logo_url;
                                         $type = pathinfo($path, PATHINFO_EXTENSION);
                                         $data = file_get_contents($path);
                                         $base64 = 'data:image/' . $type . ';base64,' . base64_encode($data);
@@ -62,12 +68,12 @@
                                     //  print_r($old_school);
                                     $class = $student[0]->class;
                                     if ($student[0]->class == 'Montessori I' || $student[0]->class == 'Montessori II' || $student[0]->class == 'Montessori III'): ?>
-                                    <center> <b>  I - 5 ACADEMY YESHWANTHPUR</b></center>
+                                    <center> <b> <?php echo $school_details[0]->schoolname ?></b></center>
                                     <?php else: ?>
-                                    <center><b>NATIONAL PUBLIC SCHOOL - YESHWANTHPUR</b></center>
+                                    <center><b><?php echo $school_details[0]->schoolname ?></b></center>
                                     <?php endif; ?>
                                     <br>
-                                    <h5 style="margin-top:-10px">APPLICATION FOR REGISTRATION </h5>
+                                     <center><h5 style="margin-top:-10px">APPLICATION FOR REGISTRATION</h5></center>
                 </td>
             <td colspan="3" style="border: none; text-align: right;">
                 <h5><?php echo $student[0]->application_no;?></h5>
@@ -137,7 +143,7 @@
            </tr>
            
            <tr>
-               <th colspan="2" style="text-align:left">Siblings studying in NPS Yeshwanthpur</th>
+               <th colspan="2" style="text-align:left">Siblings studying in <?php echo $school_details[0]->schoolname ?></th>
                <td colspan="4" style="text-align:left">
                <?php
                if($student[0]->sibling_change == 'Yes')
@@ -640,7 +646,7 @@
                                     <li>Incomplete forms will be rejected </li>
                                     <br/>
                                     <li>Registration for admission does not ensure an admission.  Admission is granted on availability of seats. </li><br/>
-                                    <li>An annual fee increase of 10 to 15 percent is effective to offset the increasing expenditure by way of salary, maintenance, material and other expenditures.  I – 5 Academy is a private unaided self-financing institution. </li>
+                                    <li>An annual fee increase of 10 to 15 percent is effective to offset the increasing expenditure by way of salary, maintenance, material and other expenditures.  <?php echo $school_details[0]->schoolname ?> is a private unaided self-financing institution. </li>
                                     <br/>
                                     <li>If an intimation is not received from the school, it should be presumed that there is no vacancy and no separate intimation will be sent to the applicants who are not selected.  </li>
                                     <br/>
@@ -651,7 +657,7 @@
                                     </strong>
                                     </center>
                                     <br/>
-                                    <p style="margin-left: 20px; margin-right: 20px; text-align: justify;">I have read the rules and regulations of I – 5 Academy and I fully agree to abide by them, if admitted. I am aware that my ward’s appropriate photo/video will be put on school website / social media to showcase his / her achievements / talents as decided by school authorities.  </p>
+                                    <p style="margin-left: 20px; margin-right: 20px; text-align: justify;">I have read the rules and regulations of <?php echo $school_details[0]->schoolname ?> and I fully agree to abide by them, if admitted. I am aware that my ward’s appropriate photo/video will be put on school website / social media to showcase his / her achievements / talents as decided by school authorities.  </p>
                                     <p style="margin-left: 20px; margin-right: 20px; text-align: justify;">I understand that the School refund policy will be applicable for my ward's withdrawal after admission.</p>
                                     <p style="margin-left: 20px; margin-right: 20px; text-align: justify;">I will refrain from posting any derogatory remarks about the school or school fraternity on social media platforms.</p>
                                     <p style="margin-left: 20px; margin-right: 20px; text-align: justify;">I hereby declare that the information furnished above is true and correct to the best of my knowledge and I undertake to inform you of any changes therein, immediately. </p>
@@ -680,7 +686,7 @@
                                     <li>Incomplete forms will be rejected </li>
                                     <br/>
                                     <li>Registration for admission does not ensure admission.  Admission is granted on merit and availability of seats.  Entrance test for classes 1 to 9 & 11 will be conducted before granting admission. </li><br/>
-                                    <li>An annual fee increase of 10 to 15 percent is effective to offset the increasing expenditure by way of salary, maintenance, material and other expenditure.  National Public School Yeshwanthpur is a private unaided self-financing institution.</li>
+                                    <li>An annual fee increase of 10 to 15 percent is effective to offset the increasing expenditure by way of salary, maintenance, material and other expenditure. <?php echo $school_details[0]->schoolname ?> is a private unaided self-financing institution.</li>
                                     <br/>
                                     <li>If an intimation is not received from the school, it should be presumed that there is no vacancy and no separate intimation will be sent to the applicants who are not selected. </li>
                                     <br/>
@@ -692,7 +698,7 @@
                                     </strong>
                                     </center>
                                     <br/>
-                                    <p style="margin-left: 20px; margin-right: 20px; text-align: justify;">I have read the rules and regulations of National Public School, Yeshwanthpur and I fully agree to abide by them, if admitted. I am aware that my ward’s appropriate photo/video will be put on school website / social media to showcase his / her achievements / talents as decided by school authorities.</p>
+                                    <p style="margin-left: 20px; margin-right: 20px; text-align: justify;">I have read the rules and regulations of <?php echo $school_details[0]->schoolname ?> and I fully agree to abide by them, if admitted. I am aware that my ward’s appropriate photo/video will be put on school website / social media to showcase his / her achievements / talents as decided by school authorities.</p>
                                     <p style="margin-left: 20px; margin-right: 20px; text-align: justify;">I understand that the School refund policy will be applicable for my ward's withdrawal after admission.</p>
                                     <p style="margin-left: 20px; margin-right: 20px; text-align: justify;">I will refrain from posting any derogatory remarks about the school or school fraternity on social media platforms.</p>
                                     <p style="margin-left: 20px; margin-right: 20px; text-align: justify;">I hereby declare that the information furnished above is true and correct to the best of my knowledge and I undertake to inform you of any changes therein, immediately. </p>
@@ -744,7 +750,7 @@
 
    <center>
        <strong>
-           NATIONAL PUBLIC SCHOOL - YESHWANTHPUR<br/>
+          <?php echo $school_details[0]->schoolname ?><br/>
            ACKNOWLEDGEMENT / ADMIT CARD FOR ENTRANCE TEST <?php echo $student[0]->academic_year; ?><br/>
            (To be furnished along with the Application Form)
        </strong>
@@ -795,7 +801,7 @@
            </li>
 
            <li>Please Check our website periodically for further details on the entrance test dates, timings etc.</li>
-           <li>This Admit card is valid for <strong>NPS Yeshwanthpur</strong> only.</li>
+           <li>This Admit card is valid for <strong><?php echo $school_details[0]->schoolname ?></strong> only.</li>
            <li>On successfully passing the Entrance test, you will get an email confirming the interaction schedule with the Principal</li>
        </ul>
        <center><h6><u>STUDENTS TO BRING THIS ACKNOWLEDGEMENT SLIP FOR THE ENTRANCE TEST.</u></h6></center>

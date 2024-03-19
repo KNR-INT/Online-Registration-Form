@@ -1,5 +1,7 @@
 <html lang="en">
 @include('header')
+    <!-- Preloader -->
+    @include('preloader')
 
 <body style="background-color: #f8f9fa; font-family: Arial, sans-serif;">
 <div style="max-width: 1200px; margin: 0 auto; padding: 2px;">

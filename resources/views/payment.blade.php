@@ -1,5 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+
+    <!-- Preloader -->
+@include('preloader')
+
+
 @include('header')
 
 <head>
@@ -49,14 +54,12 @@
     <br>
     <div class="card-body pt-4 p-3">
                 <form id="myForm" action="{{url('update-updateadmitted')}}" enctype="multipart/form-data">
-                    @csrf
+                @csrf
                     @if($errors->any())
-                        <div class="mt-3  alert alert-primary alert-dismissible fade show" role="alert">
-                            <span class="alert-text text-white">
-                            {{$errors->first()}}</span>
-                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
-                                <i class="fa fa-close" aria-hidden="true"></i>
-                            </button>
+                        <div class="mt-3 alert alert-primary alert-dismissible fade show" role="alert">
+                            <span class="alert-text text-black">
+                                {{$errors->first()}}
+                            </span>
                         </div>
                     @endif
                     @if(session('success'))
@@ -97,7 +100,7 @@
     $apid = $student[0]->id;
     $last_appli_id = sprintf('%04u', $apid);
     ?>
-    <input type="hidden" id="application_no" name="application_no" value="YPR/<?php echo $student[0]->class;?>/<?php echo $acad_yr[0];?>/<?php echo $last_appli_id ?>">
+    <input type="hidden" id="application_no" name="application_no" value="KNR/<?php echo $student[0]->class;?>/<?php echo $acad_yr[0];?>/<?php echo $last_appli_id ?>">
 
 <tr id="a">
 <th>Student Name</th>
@@ -122,7 +125,7 @@
 
 <tr id="a">
     <th>Application No</th>
-    <td><input class="form-control" type="text" style="text-transform:uppercase" value="YPR/<?php echo $student[0]->class;?>/<?php echo $acad_yr[0];?>/<?php echo $last_appli_id ?>"readonly></td>    
+    <td><input class="form-control" type="text" style="text-transform:uppercase" value="KNR/<?php echo $student[0]->class;?>/<?php echo $acad_yr[0];?>/<?php echo $last_appli_id ?>"readonly></td>    
 </tr>
 
 <tr id="a">

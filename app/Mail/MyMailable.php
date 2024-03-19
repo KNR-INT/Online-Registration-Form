@@ -23,7 +23,7 @@ class MyMailable1 extends Mailable
         // return $this->subject('OTP for Application Submission to NPS YPR')
         //             ->view('otpgeneration')  
         //             ->with('otpgeneration', $this->emails);  
-                    return $this->from('info@leap.npsypr.com', 'Sender Name')
+                    return $this->from('knrintind@gmail.com', 'Sender Name')
                     ->subject('Your Subject')
                     ->markdown('otpgeneration')
                     ->with('details', $this->details);

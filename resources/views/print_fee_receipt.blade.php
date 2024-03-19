@@ -1,4 +1,10 @@
 <body class="hold-transition sidebar-mini layout-fixed">
+     <?php 
+                    $school_details = DB::connection('secondary')->table('schooldetails')->get();
+                    $school_logo = $school_details[0]->schoollogo;
+                    $base_url = $school_details[0]->base_url;
+                    $school_logo_url = $base_url . $school_logo;
+                ?>
 <?php    
                         if(!empty($appli_id))
                             {
@@ -101,13 +107,13 @@
                                     $class = $student[0]->class;
                                     if($student[0]->class =='Montessori I' || $student[0]->class =='Montessori II' || $student[0]->class == 'Montessori III')
                                     {
-                                        $path = 'https://leap-i5.npsypr.edu.in/uploads/logo.png';
+                                        $path =  $school_logo_url;
                                         $type = pathinfo($path, PATHINFO_EXTENSION);
                                         $data = file_get_contents($path);
                                         $base64 = 'data:image/' . $type . ';base64,' . base64_encode($data);
                                     }
                                     else {
-                                        $path = 'https://leap.npsypr.edu.in/uploads/logo.png';
+                                        $path = $school_logo_url;
                                         $type = pathinfo($path, PATHINFO_EXTENSION);
                                         $data = file_get_contents($path);
                                         $base64 = 'data:image/' . $type . ';base64,' . base64_encode($data);
@@ -136,14 +142,14 @@
                                      $student = DB::select("SELECT * FROM `students` WHERE `id` = '$id'"); 
                                     $class = $student[0]->class;
                                     if ($student[0]->class == 'Montessori I' || $student[0]->class == 'Montessori II' || $student[0]->class == 'Montessori III'): ?>
-                                        I - 5 ACADEMY YESHWANTHPUR
+                                      <?php echo $school_details[0]->schoolname ?>
                                     <?php else: ?>
-                                    NATIONAL PUBLIC SCHOOL - YESHWANTHPUR
+                                   <?php echo $school_details[0]->schoolname ?>
                                     <?php endif; ?>
                                     </font>
                                     <br>
-                                    <font style="font-weight: bold; font-size: 13px;">#9/1, Pipeline Road, Raghavendra Layout (Behind RNS Motors), Yeshwanthpur, Bangalore, 560 022<br>Email-ID : info@npsypr.edu.in </font></center>
-                                    <h4 style="font-size: 15px;font-weight: bold;" align="center">APPLICATION FEE RECEIPT</h4>
+                                    </center>
+                                    <center><h4 style="font-size: 15px;font-weight: bold; ">APPLICATION FEE RECEIPT</h4></center>
                                     </td>
                                     </tr>
                                     </tbody>
@@ -378,7 +384,7 @@
                                             // echo $currentYear;
                                             ?>
                                             <td style="font-size: 9px;">
-                                                © 2013 - <?php  echo $currentYear; ?>  - NPS Yeshwanthpur.  All Rights Reserved.
+                                                © 2013 - <?php  echo $currentYear; ?>  - KNR. All Rights Reserved.
                                             </td>
                                         </tr>
                                     </tbody>

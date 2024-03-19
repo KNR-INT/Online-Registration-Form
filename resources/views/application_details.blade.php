@@ -1,5 +1,7 @@
 <html lang="en">
 @include('header')
+    <!-- Preloader -->
+@include('preloader')
 <body style="background-color: #ffffff; font-family: Arial, sans-serif;">
 <div style="max-width: 1200px; margin: 0 auto; padding: 2px;">
     <div class="container-fluid py-4">
@@ -63,13 +65,15 @@
                     <div class="col-15">
                     <div class="text-align: center;" >	
                     <center>
+                    <?php 
+                      $school_details = DB::connection('secondary')->table('schooldetails')->get();
+                    ?>
                     <?php if ($student[0]->class == 'Montessori I' || $student[0]->class == 'Montessori II' || $student[0]->class == 'Montessori III'): ?>
-                    <center><label style="color:#343a40;"><h1><b>I - 5 ACADEMY</b></h1></label></center>
+                    <center><label style="color:#343a40;"><h1><b><?php echo $school_details[0]->schoolname ?></b></h1></label></center>
                     <?php else: ?>
-                    <center><label style="color:#343a40;"><h1><b>NATIONAL PUBLIC SCHOOL</b></h1></label></center>
+                    <center><label style="color:#343a40;"><h1><b><?php echo $school_details[0]->schoolname ?></b></h1></label></center>
                     <?php endif; ?>		
-                    <label style="color:#343a40;"><h3><b>YESHWANTHPUR</b></h3></label>
-                    <br>
+                
                     <label style="color:#343a40;"><h4><b><u>Application For Registration</u></b></h4>
                    <?php
                     $academic = $student[0]->academic_year;
@@ -77,7 +81,7 @@
                     $apid = $student[0]->id;
                     $last_appli_id = sprintf('%04u', $apid);
                    ?>
-                    <label style="color:#343a40;font-family: Calibri, sans-serif;"><h2><b>Application Number: YPR/<?php echo $student[0]->class;?>/<?php echo $acad_yr[0];?>/<?php echo $last_appli_id ?></b></h2></label>
+                    <label style="color:#343a40;font-family: Calibri, sans-serif;"><h2><b>Application Number: KNR/<?php echo $student[0]->class;?>/<?php echo $acad_yr[0];?>/<?php echo $last_appli_id ?></b></h2></label>
                     </div></center>
                     </div>
 
@@ -93,7 +97,7 @@
 
                     <input type="hidden" id="page_type" name="page_type" value="<?php echo $_GET['class']; ?>">
 
-                    <input type="hidden" id="application_no" name="application_no" value="YPR/<?php echo $student[0]->class;?>/<?php echo $acad_yr[0];?>/<?php echo $last_appli_id ?>">
+                    <input type="hidden" id="application_no" name="application_no" value="KNR/<?php echo $student[0]->class;?>/<?php echo $acad_yr[0];?>/<?php echo $last_appli_id ?>">
 
                     <input type="hidden" id="appli_id" name="appli_id" value="<?php echo $_GET['appli_id']; ?>">
 
@@ -142,7 +146,7 @@
                     </tr>
 
                     <tr>
-                    <td><b>Sibling studying in NPS YPR</b></td>
+                    <td><b>Sibling studying in <?php echo $school_details[0]->schoolname ?></b></td>
                     <td>
                         <?php
                         if($student[0]->sibling_change == 'Yes')
@@ -755,9 +759,9 @@
                     $fileExtension = isset($fileInfo['extension']) ? $fileInfo['extension'] : null;
                     @endphp
                     @if ($fileExtension && in_array($fileExtension, ['jpg', 'jpeg', 'png']))
-                        <img id="blah6" src="{{ asset('public/' . $student[0]->std_image) }}" alt="Image" style="width:150px;height:200px; margin-left:20px;" class="img-fluid img-thumbnail">
+                        <img id="blah6" src="{{ asset('public/public/' . $student[0]->std_image) }}" alt="Image" style="width:150px;height:200px; margin-left:20px;" class="img-fluid img-thumbnail">
                     @elseif ($fileExtension === 'pdf')
-                        <iframe id="pdfPreview6" src="{{ asset('public/' . $student[0]->std_image) }}" style="width:150px; height:200px; margin-left:50px;">
+                        <iframe id="pdfPreview6" src="{{ asset('public/public/' . $student[0]->std_image) }}" style="width:150px; height:200px; margin-left:50px;">
                         </iframe>
                     @endif
                     </td>
@@ -770,9 +774,9 @@
                     $fileExtension = isset($fileInfo['extension']) ? $fileInfo['extension'] : null;
                     @endphp
                     @if ($fileExtension && in_array($fileExtension, ['jpg', 'jpeg', 'png']))
-                        <img id="blah2" src="{{ asset('public/' . $student[0]->birth_cer) }}" alt="Image" style="width:150px;height:200px; margin-left:20px;" class="img-fluid img-thumbnail">
+                        <img id="blah2" src="{{ asset('public/public/' . $student[0]->birth_cer) }}" alt="Image" style="width:150px;height:200px; margin-left:20px;" class="img-fluid img-thumbnail">
                     @elseif ($fileExtension === 'pdf')
-                        <iframe id="pdfPreview2" src="{{ asset('public/' . $student[0]->birth_cer) }}" style="width:150px; height:200px; margin-left:50px;">
+                        <iframe id="pdfPreview2" src="{{ asset('public/public/' . $student[0]->birth_cer) }}" style="width:150px; height:200px; margin-left:50px;">
                         </iframe>
                     @endif
                     </td>
@@ -786,9 +790,9 @@
                     $fileExtension = isset($fileInfo['extension']) ? $fileInfo['extension'] : null;
                     @endphp
                     @if ($fileExtension && in_array($fileExtension, ['jpg', 'jpeg', 'png']))
-                        <img id="blah1" src="{{ asset('public/' . $student[0]->father_aadhar) }}" alt="Image" style="width:150px;height:200px; margin-left:20px;" class="img-fluid img-thumbnail">
+                        <img id="blah1" src="{{ asset('public/public/' . $student[0]->father_aadhar) }}" alt="Image" style="width:150px;height:200px; margin-left:20px;" class="img-fluid img-thumbnail">
                     @elseif ($fileExtension === 'pdf')
-                        <iframe id="pdfPreview1" src="{{ asset('public/' . $student[0]->father_aadhar) }}" style="width:150px; height:200px; margin-left:50px;">
+                        <iframe id="pdfPreview1" src="{{ asset('public/public/' . $student[0]->father_aadhar) }}" style="width:150px; height:200px; margin-left:50px;">
                         </iframe>
                     @endif
                     </td>
@@ -800,9 +804,9 @@
                     $fileExtension = isset($fileInfo['extension']) ? $fileInfo['extension'] : null;
                     @endphp
                     @if ($fileExtension && in_array($fileExtension, ['jpg', 'jpeg', 'png']))
-                        <img id="blah3" src="{{ asset('public/' . $student[0]->mother_aadhar) }}" alt="Image" style="width:150px;height:200px; margin-left:20px;" class="img-fluid img-thumbnail">
+                        <img id="blah3" src="{{ asset('public/public/' . $student[0]->mother_aadhar) }}" alt="Image" style="width:150px;height:200px; margin-left:20px;" class="img-fluid img-thumbnail">
                     @elseif ($fileExtension === 'pdf')
-                        <iframe id="pdfPreview3" src="{{ asset('public/' . $student[0]->mother_aadhar) }}" style="width:150px; height:200px; margin-left:50px;">
+                        <iframe id="pdfPreview3" src="{{ asset('public/public/' . $student[0]->mother_aadhar) }}" style="width:150px; height:200px; margin-left:50px;">
                         </iframe>
                     @endif
                     </td>
@@ -820,9 +824,9 @@
                     $fileExtension = isset($fileInfo['extension']) ? $fileInfo['extension'] : null;
                     @endphp
                     @if ($fileExtension && in_array($fileExtension, ['jpg', 'jpeg', 'png']))
-                        <img id="blah" src="{{ asset('public/' . $student[0]->student_adr) }}" alt="Image" style="width:150px;height:200px; margin-left:20px;" class="img-fluid img-thumbnail">
+                        <img id="blah" src="{{ asset('public/public/' . $student[0]->student_adr) }}" alt="Image" style="width:150px;height:200px; margin-left:20px;" class="img-fluid img-thumbnail">
                     @elseif ($fileExtension === 'pdf')
-                        <iframe id="pdfPreview" src="{{ asset('public/' . $student[0]->student_adr) }}" style="width:150px; height:200px; margin-left:50px;">
+                        <iframe id="pdfPreview" src="{{ asset('public/public/' . $student[0]->student_adr) }}" style="width:150px; height:200px; margin-left:50px;">
                         </iframe>
                     @endif
                     </td>
@@ -841,9 +845,9 @@
                     $fileExtension = isset($fileInfo['extension']) ? $fileInfo['extension'] : null;
                     @endphp
                     @if ($fileExtension && in_array($fileExtension, ['jpg', 'jpeg', 'png']))
-                        <img id="blah4" src="{{ asset('public/' . $student[0]->immunization_card) }}" alt="Image" style="width:150px;height:200px; margin-left:20px;" class="img-fluid img-thumbnail">
+                        <img id="blah4" src="{{ asset('public/public/' . $student[0]->immunization_card) }}" alt="Image" style="width:150px;height:200px; margin-left:20px;" class="img-fluid img-thumbnail">
                     @elseif ($fileExtension === 'pdf')
-                        <iframe id="pdfPreview4" src="{{ asset('public/' . $student[0]->immunization_card) }}" style="width:150px; height:200px; margin-left:50px;">
+                        <iframe id="pdfPreview4" src="{{ asset('public/public/' . $student[0]->immunization_card) }}" style="width:150px; height:200px; margin-left:50px;">
                         </iframe>
                     @endif
                     </td>
@@ -878,7 +882,7 @@
                                     <li>Incomplete forms will be rejected </li>
                                     <br/>
                                     <li>Registration for admission does not ensure an admission.  Admission is granted on availability of seats. </li><br/>
-                                    <li>An annual fee increase of 10 to 15 percent is effective to offset the increasing expenditure by way of salary, maintenance, material and other expenditures.  I – 5 Academy is a private unaided self-financing institution. </li>
+                                    <li>An annual fee increase of 10 to 15 percent is effective to offset the increasing expenditure by way of salary, maintenance, material and other expenditures.  <?php echo $school_details[0]->schoolname ?> is a private unaided self-financing institution. </li>
                                     <br/>
                                     <li>If an intimation is not received from the school, it should be presumed that there is no vacancy and no separate intimation will be sent to the applicants who are not selected.  </li>
                                     <br/>
@@ -886,7 +890,7 @@
 
                                     <h3 style= "color:#343a40"><b>DECLARATION BY PARENT/GUARDIAN</b></h3>
                                     <br/>
-                                    <p>I have read the rules and regulations of I – 5 Academy and I fully agree to abide by them, if admitted. I am aware that my ward’s appropriate photo/video will be put on school website / social media to showcase his / her achievements / talents as decided by school authorities.  </p>
+                                    <p>I have read the rules and regulations of <?php echo $school_details[0]->schoolname ?> and I fully agree to abide by them, if admitted. I am aware that my ward’s appropriate photo/video will be put on school website / social media to showcase his / her achievements / talents as decided by school authorities.  </p>
                                     <p>I understand that the School refund policy will be applicable for my ward's withdrawal after admission.</p>
                                     <p>I will refrain from posting any derogatory remarks about the school or school fraternity on social media platforms.</p>
                                     <p>I hereby declare that the information furnished above is true and correct to the best of my knowledge and I undertake to inform you of any changes therein, immediately. </p>
@@ -911,7 +915,7 @@
                                     <li>Incomplete forms will be rejected </li>
                                     <br/>
                                     <li>Registration for admission does not ensure admission.  Admission is granted on merit and availability of seats.  Entrance test for classes 1 to 9 & 11 will be conducted before granting admission. </li><br/>
-                                    <li>An annual fee increase of 10 to 15 percent is effective to offset the increasing expenditure by way of salary, maintenance, material and other expenditure.  National Public School Yeshwanthpur is a private unaided self-financing institution.</li>
+                                    <li>An annual fee increase of 10 to 15 percent is effective to offset the increasing expenditure by way of salary, maintenance, material and other expenditure. <?php echo $school_details[0]->schoolname ?> is a private unaided self-financing institution.</li>
                                     <br/>
                                     <li>If an intimation is not received from the school, it should be presumed that there is no vacancy and no separate intimation will be sent to the applicants who are not selected. </li>
                                     <br/>
@@ -919,7 +923,7 @@
 
                                     <h3 style= "color:#343a40"><b>DECLARATION BY PARENT/GUARDIAN</b></h3>
                                     <br/>
-                                    <p>I have read the rules and regulations of National Public School, Yeshwanthpur and I fully agree to abide by them, if admitted. I am aware that my ward’s appropriate photo/video will be put on school website / social media to showcase his / her achievements / talents as decided by school authorities.</p>
+                                    <p>I have read the rules and regulations of <?php echo $school_details[0]->schoolname ?> and I fully agree to abide by them, if admitted. I am aware that my ward’s appropriate photo/video will be put on school website / social media to showcase his / her achievements / talents as decided by school authorities.</p>
                                     <p>I understand that the School refund policy will be applicable for my ward's withdrawal after admission.</p>
                                     <p>I will refrain from posting any derogatory remarks about the school or school fraternity on social media platforms.</p>
                                     <p>I hereby declare that the information furnished above is true and correct to the best of my knowledge and I undertake to inform you of any changes therein, immediately. </p>

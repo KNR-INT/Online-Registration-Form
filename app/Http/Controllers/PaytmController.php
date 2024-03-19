@@ -29,7 +29,7 @@ class PaytmController extends Controller
       //   $ses_email = $session[0];
         $users = DB::select("SELECT * FROM `students` WHERE `id` = '$appli_id'");
         $randomNumber = rand(100000, 99999990);
-        $order_id = "NPSO2024".$randomNumber;
+        $order_id = "KNRO2024".$randomNumber;
         
        $insertorder_id =  DB::table('students')
         ->where('id', $appli_id)
@@ -122,7 +122,7 @@ class PaytmController extends Controller
           $users = DB::select("SELECT * FROM `fee_receipt_number` WHERE `appli_id` = '$order_id' ORDER BY `receipt_number` DESC LIMIT 1");
           $rno = $users[0]->receipt_number;
           $last_fee_receipt = sprintf('%04u', $rno);
-          $fee_receipt_no = "NPSYPR/".$acad."/".$last_fee_receipt;
+          $fee_receipt_no = "KNR/".$acad."/".$last_fee_receipt;
           
           DB::table('students')->where("order_id",$order_id)->update(["fee_receipt_no"=>$fee_receipt_no,"status"=>"Submitted"]);
 
@@ -214,7 +214,10 @@ class PaytmController extends Controller
      */
     public function send_application(Request $request)
     {
-      
+      $school_details = DB::connection('secondary')->table('schooldetails')->get();
+      $school_logo = $school_details[0]->schoollogo;
+      $base_url = $school_details[0]->base_url;
+      $school_logo_url = $base_url . $school_logo;
       $order_id = $request->appli_id;
       $pdf = app('dompdf.wrapper');
       $users = DB::select("SELECT * FROM `students` WHERE `id` = '$order_id'");
@@ -224,6 +227,12 @@ class PaytmController extends Controller
 
       $father_email = $users[0]->father_email_verified_at;
       $mother_email = $users[0]->mother_email_verified_at;
+
+      $validatedData = $request->validate([
+        'email' => 'required|email',
+        'father_email' => 'nullable|email',
+        'mother_email' => 'nullable|email',
+    ]);
 
       try {
         $ppp = 'preetam';
@@ -244,7 +253,7 @@ class PaytmController extends Controller
         $message->to($email)
                 ->cc($father_email)
                 ->bcc($mother_email)
-            ->subject('NPS YPR – ONLINE APPLICATION FOR REGISTERATION "'.$appli_no.'"')
+            ->subject($school_details[0]->schoolname.' – ONLINE APPLICATION FOR REGISTERATION "'.$appli_no.'"')
             ->attach(public_path('public/'.$order_id . "_fee_receipt.pdf"))
             ->attach(public_path('public/'.$order_id . "_application_form.pdf"));
       });
@@ -254,7 +263,7 @@ class PaytmController extends Controller
           $message->to($email)
                   ->cc($father_email)
                   ->bcc($mother_email)
-              ->subject('NPS YPR – ONLINE APPLICATION FOR REGISTERATION "'.$appli_no.'"')
+              ->subject($school_details[0]->schoolname. ' – ONLINE APPLICATION FOR REGISTERATION "'.$appli_no.'"')
               ->attach(public_path('public/'.$order_id . "_fee_receipt.pdf"))
               ->attach(public_path('public/'.$order_id . "_application_form.pdf"));
         });
@@ -264,7 +273,7 @@ class PaytmController extends Controller
           $message->to($email)
                   ->cc($father_email)
                   ->bcc($mother_email)
-              ->subject('I-5 Academy - ONLINE APPLICATION "'.$appli_no.'"')
+              ->subject($school_details[0]->schoolname.' - ONLINE APPLICATION "'.$appli_no.'"')
               ->attach(public_path('public/'.$order_id . "_fee_receipt.pdf"))
               ->attach(public_path('public/'.$order_id . "_application_form.pdf"));
         });

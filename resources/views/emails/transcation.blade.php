@@ -1,5 +1,11 @@
 <!DOCTYPE html>
 <html>
+<?php 
+$school_details = DB::connection('secondary')->table('schooldetails')->get();
+$school_logo = $school_details[0]->schoollogo;
+$base_url = $school_details[0]->base_url;
+$school_logo_url = $base_url . $school_logo;
+?>
 <head>
     <!-- <title>OTP for Login</title> -->
 </head>
@@ -7,11 +13,11 @@
     <div style="font-family: Helvetica,Arial,sans-serif;min-width:1000px;line-height:2">
         <div style="margin:50px auto;width:70%;padding:20px 0">
         <div class="container-fluid" style="display: flex; align-items: center;">
-        <img src="https://leap.npsypr.edu.in/uploads/logo.png" alt="Npsypr" style="width: 80px; height: 80px;">
+        <img src="leapknr-demo-school.knrint.com/uploads_backup/KNR_LOGO_TM.jpg" alt="KNR" style="width: 80px; height: 80px;">
         </div>
         <p style="font-size:1.1em"><b>Dear Parent</b><br> </p>
         <p style="font-size:1.1em">
-        Greetings from National Public School Yeshwanthpur!<br/>
+        Greetings from <?php echo $school_details[0]->schoolname ?>!<br/>
         Please find attached the Registration Form with Admit Card and Registration Fee receipt.<br/>
         The entrance test dates will be posted on the Website and will also be emailed to you. <br/>
         <b>Points to be noted on the day of Entrance.</b><br/>
@@ -31,11 +37,11 @@
             <li>Students should carry their own water bottles.</li>
             <li>Students who have cleared the entrance test will receive a mail regarding the interaction session with the Principal. Interaction session should be attended by both the parents along with their ward(s).</li>
         </ol>
-        For more details on entrance, kindly visit this link https://npsypr.edu.in/entrance-test-details/<br/>
-        In case of any issues please mail to admissions@npsypr.edu.in<br/></p>
+       <br/>
+        In case of any issues please mail to knrintind@gmail.com<br/></p>
         <p style="font-size:1.1em">Regards,<br>
         Admin<br>
-        NPS YPR</p>        
+        <?php echo $school_details[0]->schoolname ?></p>        
         </div>
         <hr>
         <div>

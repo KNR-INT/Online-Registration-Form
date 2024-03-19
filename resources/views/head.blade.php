@@ -1,10 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+<?php 
+$school_details = DB::connection('secondary')->table('schooldetails')->get();
+$school_logo = $school_details[0]->schoollogo;
+$base_url = $school_details[0]->base_url;
+$school_logo_url = $base_url . $school_logo;
+?>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=0.5">
     <title>Online Registration</title>
-    <link rel="icon" href="https://leap.npsypr.edu.in/uploads/logo.png" type="image/x-icon">
+    <link rel="icon" href="<?php echo $school_logo_url; ?>" type="image/x-icon">
 </head>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -82,9 +88,11 @@
         }
     </style>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a href="https://www.npsypr.edu.in/" class="navbar-brand">
-            <img src="https://leap.npsypr.edu.in/uploads/logo.png" alt="Logo" style="width: 45px; height: auto;">
-            <span>NATIONAL PUBLIC SCHOOL, YESHWANTHPUR</span><br/>
+        <a href="" class="navbar-brand">
+            
+                <?php echo '<img src="'.$school_logo_url.'" class="logo" alt="Logo">' ?>
+           
+            <span><?php echo $school_details[0]->schoolname ?></span><br/>
         </a>
        
         <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">

@@ -1,6 +1,13 @@
 <html lang="en">
+
 @include('header')
 <body style="background-color: #f8f9fa; font-family: Arial, sans-serif;">
+
+
+<!-- Preloader -->
+@include('preloader')
+
+
 <div style="max-width: 1200px; margin: 0 auto; padding: 2px;">
     <div class="container-fluid py-4">
         <div class="card">

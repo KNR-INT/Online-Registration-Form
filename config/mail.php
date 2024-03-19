@@ -43,8 +43,8 @@ return [
     ],
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'info@leap.npsypr.com'),
-        'name' => env('MAIL_FROM_NAME', 'NPSYPR'),
+        'address' => env('MAIL_FROM_ADDRESS', 'knrintind@gmail.com'),
+        'name' => env('MAIL_FROM_NAME', 'KNR'),
     ],
 
     'markdown' => [
