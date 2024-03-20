@@ -1,13 +1,8 @@
 <html lang="en">
-
 @include('header')
 <body style="background-color: #f8f9fa; font-family: Arial, sans-serif;">
-
-
-<!-- Preloader -->
+    <!-- Preloader -->
 @include('preloader')
-
-
 <div style="max-width: 1200px; margin: 0 auto; padding: 2px;">
     <div class="container-fluid py-4">
         <div class="card">
@@ -554,8 +549,11 @@
                         <div class="col-md-6">
                 <input type="hidden" id="sibling_change_old" name="sibling_change_old" value="<?php if(!empty($student[0]->sibling_change)) { echo $student[0]->sibling_change; } ?>">
                 <!-- <span id="sibling_change_err" style="color:red;"></span> -->
+                <?php 
+                $school_details = DB::connection('secondary')->table('schooldetails')->get();
+                ?>
                 <div class="sibling">
-                    <span class="title"><b>Sibling currently studying at NPS Yeshwanthpur*</b>
+                    <span class="title"><b>Sibling currently studying at <?php echo $school_details[0]->schoolname ?> *</b>
                         <div class="input-field">
                             <select class="form-control" id="sibling_change" name="sibling_change">
                                 <option disabled selected value="">--SELECT--</option>

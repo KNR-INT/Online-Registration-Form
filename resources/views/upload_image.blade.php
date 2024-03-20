@@ -2,7 +2,6 @@
 @include('header')
     <!-- Preloader -->
     @include('preloader')
-
 <body style="background-color: #f8f9fa; font-family: Arial, sans-serif;">
 <div style="max-width: 1200px; margin: 0 auto; padding: 2px;">
     <div class="container-fluid py-4">
@@ -185,7 +184,7 @@
                 <input class="form-control" type="file" id="Mothers_Aadhar_card" name="file3" accept=".jpg, .jpeg, .png, .pdf" onchange="preview3()" value="{{ $student[0]->mother_aadhar }}">
                 @if($student[0]->mother_aadhar)
                          @php
-                        $fileExtension = pathinfo($student[0]->birth_cer)['extension'];
+                        $fileExtension = pathinfo($student[0]->mother_aadhar)['extension'];
                         @endphp
 
                      @if (in_array($fileExtension, ['jpg', 'jpeg', 'png']))

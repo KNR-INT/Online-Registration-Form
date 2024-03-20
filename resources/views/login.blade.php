@@ -32,7 +32,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: url("{{ asset('public/Image/login-register.jpg') }}") ;
+           background-image: url("public/public/Image/school-background.jpg");
             background-size: cover;
             background-repeat: no-repeat;
             filter: blur(5px);
@@ -163,7 +163,7 @@
                     @endif
                 </div>
                 <div class="col-12 md-3 d-flex justify-content-center my-2">
-  <div class="g-recaptcha" data-sitekey="6LfuTH0gAAAAADa966cAoO4eHhGyIla2OkKzXlNK" data-callback="enableBtn"></div>
+  <div class="g-recaptcha" data-sitekey="6LfuTH0gAAAAADa966cAoO4eHhGyIla2OkKzXlNK" data-callback="enableBtn" ></div>
 </div>
                 <button disabled="disabled" type="submit" id="button1" class="btn btn-dark btn-block">Send OTP</button>
             </form>

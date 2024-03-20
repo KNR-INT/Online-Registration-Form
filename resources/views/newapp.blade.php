@@ -1,11 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
-
+<?php 
+$school_details = DB::connection('secondary')->table('schooldetails')->get();
+$school_logo = $school_details[0]->schoollogo;
+$base_url = $school_details[0]->base_url;
+$school_logo_url = $base_url . $school_logo;
+?>
 <head>
 <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=0.8">
 <title>Online Registration</title>
-<link rel="icon" href="https://leap.npsypr.edu.in/uploads/logo.png" type="image/x-icon">
+<link rel="icon" href="<?php echo $school_logo_url; ?>" type="image/x-icon">
 </head>
 
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -84,8 +89,14 @@
     </style>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a href="https://www.npsypr.edu.in/" class="navbar-brand">
-            <img src="public/Image/NPS_logo.png" alt="Logo" style="width: 45px; height: auto;">
-            <span>NATIONAL PUBLIC SCHOOL, YESHWANTHPUR</span>
+           <?php
+               $school_details = DB::connection('secondary')->table('schooldetails')->get();
+                // print_r($school_details);
+                $school_logo = $school_details[0]->schoollogo;
+                $base_url = $school_details[0]->base_url;
+                echo '<img src="'.$base_url.$school_logo.'" class="logo" alt="Logo">'
+                ?>
+            <span><?php echo $school_details[0]->schoolname ?></span>
         </a>
         <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
             <span class="navbar-toggler-icon"></span>
@@ -121,7 +132,7 @@
             <div class="col-md-3 col-sm-6">
                 <div class="card" style="padding:10px;">
                     <div class="alert alert-info">
-                    <a href="{{ url('guidelinesmont/a?class=mont') }}"><img src="public/Image/Mont.jpg" alt="" class="img-fluid"></a>
+                    <a href="{{ url('guidelinesmont/a?class=mont') }}"><img src="public/public/Image/Mont.jpg" alt="" class="img-fluid"></a>
                     </div>
                     <div class="card-footer text-center">
                         <h4> <a href="{{ url('guidelinesmont/a?class=mont') }}" class="d-block"> Montessori</a></h4>
@@ -145,7 +156,7 @@
 <div class="col-md-3 col-sm-6">
                 <div class="card" style="padding:10px;">
                     <div class="alert alert-info">
-                        <a href="{{ url('guidelinesmont/a?class=kinder') }}"><img src="public/Image/kindergarden.jpg" alt="" class="img-fluid"></a>
+                        <a href="{{ url('guidelinesmont/a?class=kinder') }}"><img src="public/public/Image/kindergarden.jpg" alt="" class="img-fluid"></a>
                     </div>
                     <div class="card-footer text-center">
                         <h4><a href="{{ url('guidelinesmont/a?class=kinder') }}" class="d-block"> Kindergarten</a></h4>
@@ -169,7 +180,7 @@
             <div class="col-md-3 col-sm-6">
                 <div class="card" style="padding:10px;">
                     <div class="alert alert-info">
-                        <a href="{{ url('guidelinesmont/a?class=1to9') }}"><img src="public/Image/grade 1-9.jpg" alt="" class="img-fluid"></a>
+                        <a href="{{ url('guidelinesmont/a?class=1to9') }}"><img src="public/public/Image/grade 1-9.jpg" alt="" class="img-fluid"></a>
                     </div>
                     <div class="card-footer text-center">
                         <h4><a href="{{ url('guidelinesmont/a?class=1to9') }}" class="d-block"> Grade 1-9</a></h4>
@@ -193,7 +204,7 @@
             <div class="col-md-3 col-sm-6">
                 <div class="card" style="padding:10px;">
                     <div class="alert alert-info">
-                        <a href="{{ url('guidelinesmont/a?class=11') }}"><img src="public/Image/grade 11.jpg" alt=""  class="img-fluid"></a>
+                        <a href="{{ url('guidelinesmont/a?class=11') }}"><img src="public/public/Image/grade 11.jpg" alt=""  class="img-fluid"></a>
                     </div>
                     <div class="card-footer text-center">
                         <h4><a href="{{ url('guidelinesmont/a?class=11') }}" class="d-block"> Grade 11</a></h4>

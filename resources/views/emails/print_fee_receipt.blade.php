@@ -14,8 +14,8 @@
                     <tr>
                         <td style="background-color: white; padding: 20px;">
                             <center>
-                                <font style="font-weight: bold; font-size: 20px;">NATIONAL PUBLIC SCHOOL - YESHWANTHPUR</font><br>
-                                <font style="font-weight: bold; font-size: 13px;">#9/1, Pipeline Road, Raghavendra Layout (Behind RNS Motors), Yeshwanthpur, Bangalore-560 022<br>Email-ID : info@npsypr.edu.in</font>
+                                <font style="font-weight: bold; font-size: 20px;">KNR SCHOOL</font><br>
+                                <font style="font-weight: bold; font-size: 13px;">#9/1, Pipeline Road, Raghavendra Layout (Behind RNS Motors), Yeshwanthpur, Bangalore-560 022<br>Email-ID : knr@gmail.com</font>
                             </center>
                             <h4 style="font-size: 15px; font-weight: bold; text-align: center;">APPLICATION FEE RECEIPT</h4>
                         </td>
@@ -198,7 +198,7 @@ if (!empty($fee_receipt[0])) {
                         <td>This is an electronically generated receipt, hence no signature required.</td>
                     </tr>
                     <tr>
-                        <td style="font-size: 9px;">© 2013 - 2023 by KNR.</td>
+                        <td style="font-size: 9px;">© 2013 - 2023 by NPS Yeshwanthpur.</td>
                     </tr>
                 </tbody>
             </table>

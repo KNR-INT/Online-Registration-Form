@@ -137,7 +137,7 @@
                                     $class = $student[0]->class;
                             ?>
                                    
-                                    <center><font style="font-weight: bold;font-size: 15px;">
+                                    <center><font style="font-weight: bold;font-size: 15px;margin-right:206px;">
                                     <?php
                                      $student = DB::select("SELECT * FROM `students` WHERE `id` = '$id'"); 
                                     $class = $student[0]->class;
@@ -149,7 +149,7 @@
                                     </font>
                                     <br>
                                     </center>
-                                    <center><h4 style="font-size: 15px;font-weight: bold; ">APPLICATION FEE RECEIPT</h4></center>
+                                    <center><h4 style="font-size: 15px;font-weight: bold;margin-left:-120px;">APPLICATION FEE RECEIPT</h4></center>
                                     </td>
                                     </tr>
                                     </tbody>

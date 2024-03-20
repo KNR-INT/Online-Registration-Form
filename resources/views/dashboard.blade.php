@@ -10,7 +10,7 @@
             <div class="col-md-3 col-sm-6">
                 <div class="card">
                     <div class="custom-info-alert">
-                        <a href="newapp" class="center-image"><img src="public/Image/111.jpeg" alt="" class="img-fluid"></a>
+                        <a href="newapp" class="center-image"><img src="public/public/Image/111.jpeg" alt="" class="img-fluid"></a>
                     </div>
                     <div class="card-footer" style="background-color: #FFB673;">
     <h4><a href="newapp" class="d-block">New Application</a></h4>
@@ -21,7 +21,7 @@
             <div class="col-md-3 col-sm-6">
                 <div class="card">
                     <div class="custom-info-alert">
-                        <a href="myapp" class="center-image"><img src="public/Image/666.jpeg" alt="" class="img-fluid"></a>
+                        <a href="myapp" class="center-image"><img src="public/public/Image/666.jpeg" alt="" class="img-fluid"></a>
                     </div>
                     <div class="card-footer" style="background-color: #BCDF66;">
                         <h4><a href="myapp" class="d-block">My Application</a></h4>

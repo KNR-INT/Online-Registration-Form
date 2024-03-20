@@ -29,7 +29,7 @@ class PaytmController extends Controller
       //   $ses_email = $session[0];
         $users = DB::select("SELECT * FROM `students` WHERE `id` = '$appli_id'");
         $randomNumber = rand(100000, 99999990);
-        $order_id = "KNRO2024".$randomNumber;
+        $order_id = "NPSO2024".$randomNumber;
         
        $insertorder_id =  DB::table('students')
         ->where('id', $appli_id)
@@ -164,7 +164,8 @@ class PaytmController extends Controller
           // return redirect()->action(
           //   'PaytmController@send_application', ['appli_id' => $order_id]
         // );
-        return redirect('send_application/a?appli_id='.$order_id);
+            return View::make('paymentsuccess',['order_id' => $order_id])->with('delay', 1000);
+        // return redirect('send_application/a?appli_id='.$order_id);
 
       //   Mail::send('emails.transcation', $data, function (Message $message) use ($email, $order_id) {
       //     $message->to($email)
@@ -212,27 +213,25 @@ class PaytmController extends Controller
      *
      * @return Object
      */
-    public function send_application(Request $request)
+    public function send_application()
     {
-      $school_details = DB::connection('secondary')->table('schooldetails')->get();
-      $school_logo = $school_details[0]->schoollogo;
-      $base_url = $school_details[0]->base_url;
-      $school_logo_url = $base_url . $school_logo;
-      $order_id = $request->appli_id;
+      
+      $order_id = "44";
+      echo $order_id;
       $pdf = app('dompdf.wrapper');
       $users = DB::select("SELECT * FROM `students` WHERE `id` = '$order_id'");
       $email = $users[0]->email_id;
       $appli_no = $users[0]->application_no;
       $appli_class = $users[0]->link_class;
 
-      $father_email = $users[0]->father_email_verified_at;
-      $mother_email = $users[0]->mother_email_verified_at;
-
-      $validatedData = $request->validate([
-        'email' => 'required|email',
-        'father_email' => 'nullable|email',
-        'mother_email' => 'nullable|email',
-    ]);
+    //   $father_email = $users[0]->father_email_verified_at;
+    //   $mother_email = $users[0]->mother_email_verified_at;
+      
+    //   $validatedData = $request->validate([
+    //     'email' => 'required|email',
+    //     'father_email' => 'nullable|email',
+    //     'mother_email' => 'nullable|email',
+    // ]);
 
       try {
         $ppp = 'preetam';
@@ -253,32 +252,32 @@ class PaytmController extends Controller
         $message->to($email)
                 ->cc($father_email)
                 ->bcc($mother_email)
-            ->subject($school_details[0]->schoolname.' – ONLINE APPLICATION FOR REGISTERATION "'.$appli_no.'"')
+            ->subject('KNR – ONLINE APPLICATION FOR REGISTERATION "'.$appli_no.'"')
             ->attach(public_path('public/'.$order_id . "_fee_receipt.pdf"))
             ->attach(public_path('public/'.$order_id . "_application_form.pdf"));
       });
       }
-      elseif ($appli_class == 'kinder') {
-        Mail::send('emails.kinder_mail', $data, function (Message $message) use ($email, $father_email, $mother_email, $order_id, $appli_no) {
-          $message->to($email)
-                  ->cc($father_email)
-                  ->bcc($mother_email)
-              ->subject($school_details[0]->schoolname. ' – ONLINE APPLICATION FOR REGISTERATION "'.$appli_no.'"')
-              ->attach(public_path('public/'.$order_id . "_fee_receipt.pdf"))
-              ->attach(public_path('public/'.$order_id . "_application_form.pdf"));
-        });
-      }
-      elseif ($appli_class == 'mont') {
-        Mail::send('emails.mont_mail', $data, function (Message $message) use ($email, $father_email, $mother_email, $order_id, $appli_no) {
-          $message->to($email)
-                  ->cc($father_email)
-                  ->bcc($mother_email)
-              ->subject($school_details[0]->schoolname.' - ONLINE APPLICATION "'.$appli_no.'"')
-              ->attach(public_path('public/'.$order_id . "_fee_receipt.pdf"))
-              ->attach(public_path('public/'.$order_id . "_application_form.pdf"));
-        });
-      }
-    return View::make('paymentsuccess',['order_id' => $order_id])->with('delay', 5000);
+    //   elseif ($appli_class == 'kinder') {
+    //     Mail::send('emails.kinder_mail', $data, function (Message $message) use ($email, $father_email, $mother_email, $order_id, $appli_no) {
+    //       $message->to($email)
+    //               ->cc($father_email)
+    //               ->bcc($mother_email)
+    //           ->subject('KNR – ONLINE APPLICATION FOR REGISTERATION "'.$appli_no.'"')
+    //           ->attach(public_path('public/'.$order_id . "_fee_receipt.pdf"))
+    //           ->attach(public_path('public/'.$order_id . "_application_form.pdf"));
+    //     });
+    //   }
+    //   elseif ($appli_class == 'mont') {
+    //     Mail::send('emails.mont_mail', $data, function (Message $message) use ($email, $father_email, $mother_email, $order_id, $appli_no) {
+    //       $message->to($email)
+    //               ->cc($father_email)
+    //               ->bcc($mother_email)
+    //           ->subject('I-5 Academy - ONLINE APPLICATION "'.$appli_no.'"')
+    //           ->attach(public_path('public/'.$order_id . "_fee_receipt.pdf"))
+    //           ->attach(public_path('public/'.$order_id . "_application_form.pdf"));
+    //     });
+    //   }
+    // return View::make('paymentsuccess',['order_id' => $order_id])->with('delay', 5000);
     // return Redirect::to('paymentsuccess')->delay(5);
     // return view('login');
     }

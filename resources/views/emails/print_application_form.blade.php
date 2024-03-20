@@ -83,9 +83,6 @@
                             </style>   
                     </head>
                 <body onload="window.print();"> 
-                <?php 
-                      $school_details = DB::connection('secondary')->table('schooldetails')->get();
-                    ?>
                 <center>
                     <div style="width: 780px;margin-left: -40px;" id="divToPrint">
                     <div style="height: 50%;padding-right: 10%;width: 80%;padding-left:10%;" >

@@ -1,11 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-
+@include('header')
     <!-- Preloader -->
 @include('preloader')
 
-
-@include('header')
 
 <head>
     <meta charset="utf-8">
@@ -54,7 +52,7 @@
     <br>
     <div class="card-body pt-4 p-3">
                 <form id="myForm" action="{{url('update-updateadmitted')}}" enctype="multipart/form-data">
-                @csrf
+                   @csrf
                     @if($errors->any())
                         <div class="mt-3 alert alert-primary alert-dismissible fade show" role="alert">
                             <span class="alert-text text-black">

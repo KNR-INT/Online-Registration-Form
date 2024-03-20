@@ -10,7 +10,7 @@ $school_logo_url = $base_url . $school_logo;
     <div style="font-family: Helvetica,Arial,sans-serif;min-width:1000px;line-height:2">
         <div style="margin:50px auto;width:70%;padding:20px 0">
         <div class="container-fluid" style="display: flex; align-items: center;">
-        <img src="leapknr-demo-school.knrint.com/uploads_backup/KNR_LOGO_TM.jpg" alt="KNR" style="width: 80px; height: 80px;">
+        <img src="leapknr-demo-school.knrint.com/uploads_backup/KNR_LOGO_TM.jpg" alt="KNR" style="width: 110px; height: 80px;">
         </div>
         <p style="font-size:1.1em"><b>Dear Parent</b><br> </p>
         <p style="font-size:1.1em">

@@ -12,7 +12,7 @@
             <div class="col-md-3 col-sm-4">
                 <div class="card" style="padding: 0px;">
                     <div class="custom-info-alert">
-                        <a href="submited" class="center-image"><img src="public/Image/333.jpeg" alt="" class="img-fluid"></a>
+                        <a href="submited" class="center-image"><img src="public/public/Image/333.jpeg" alt="" class="img-fluid"></a>
                     </div>
                     <!-- <div class="custom-text-footer card-footer"> -->
                     <div class="card-footer" style="background-color: #CB878A;">
@@ -24,7 +24,7 @@
             <div class="col-md-3 col-sm-4">
                 <div class="card" style="padding: 0px;">
                     <div class="custom-info-alert">
-                        <a href="draft" class="center-image"><img src="public/Image/444.jpeg" alt="" class="img-fluid">
+                        <a href="draft" class="center-image"><img src="public/public/Image/444.jpeg" alt="" class="img-fluid">
                     </a>
                     </div>
                     <div class="card-footer" style="background-color: #E2B432;">

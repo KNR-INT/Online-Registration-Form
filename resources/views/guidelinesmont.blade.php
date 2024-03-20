@@ -9,6 +9,9 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <body style="background-color: #ffffff; font-family: Arial, sans-serif; font-size: 15px;">
 <!-- <div> -->
+ <?php 
+    $school_details = DB::connection('secondary')->table('schooldetails')->get();
+?>
 <div class="justify-content-center" style="margin-top:50px; margin-left: 50px;">
 		<div class="container-fluid">
 				&nbsp;
@@ -22,11 +25,11 @@
         <br>
          <h3><b>ADMISSIONS</b></h3>
         <br>
-        <p>Welcome to KNR.</p>
+        <p>Welcome to <?php echo $school_details[0]->schoolname ?>. </p>
 
         <p>We are an educational institution that prepares students for a rapidly changing world by nurturing the required skill sets, instilling a global perspective and inculcating core values of respect, honesty, loyalty, perseverance and compassion. </p>
         
-        <p>Admission to KNR, is open to all children from Montessori (I-5 Academy), Pre-K, Kindergarten and Classes 1 to 9 & 11.</p>
+        <p>Admission to <?php echo $school_details[0]->schoolname ?>, is open to all children from Montessori, Pre-K, Kindergarten and Classes 1 to 9 & 11.</p>
     
         <h5><b>Kindly note the age criteria as on 1st June 2024:</b></h5>
         <ul>
@@ -51,12 +54,12 @@
         </ul>
 
         <p>Registration fee - Rs <?php echo $registrationFee ?>(non-refundable to be paid online)</p>
-        <p>We appreciate the interest evinced by the parents seeking admission at National Public School, Yeshwanthpur. We would like to inform that we have very limited seats available for admission to all the classes from Classes 1 to 9 and 11. The seats will be available in the open category according to the priority list given below:</p>
+        <p>We appreciate the interest evinced by the parents seeking admission at <?php echo $school_details[0]->schoolname ?>. We would like to inform that we have very limited seats available for admission to all the classes from Classes 1 to 9 and 11. The seats will be available in the open category according to the priority list given below:</p>
 
         <ul>
             <li>The first priority is for siblings.</li>
             <li>The second priority is for children of our teachers and other staff members.</li>
-            <li>Priority for admission is also listed for Alumni of National Public School.</li>
+            <li>Priority for admission is also listed for Alumni of <?php echo $school_details[0]->schoolname ?>.</li>
             <li>Subsequent seats will be open to others.</li>
             <li><b>Admission to classes 1-9 are based on vacancies available.</b></li>
             <li><b>Admission for Registration to classes 10 & 12 are based on Interstate transfer.</b></li>
@@ -70,18 +73,17 @@
          Address for Communication :</b>
             <br/>
             <br/>
-            <b>NATIONAL PUBLIC SCHOOL</b>
+            <b><?php echo $school_details[0]->schoolname ?></b>
             <br/>
-            #9/1, Pipeline Road, Raghavendra Layout 
-            <br/>
-            (Behind RNS Motors)
-            <br/>
-            Yeshwanthpur
-            <br/>
-            Bangalore – 560 022
-            <br/>
-            Phone: +91-080-23571220 / 29501184<br/>
-            +91-6364071122  <br/>
+            <!--#9/1, Pipeline Road, Raghavendra Layout -->
+            <!--<br/>-->
+            <!--(Behind RNS Motors)-->
+            <!--<br/>-->
+            <!--Yeshwanthpur-->
+            <!--<br/>-->
+            <!--Bangalore – 560 022-->
+            <!--<br/>-->
+            Phone: +91 9845919158<br/>
             Email:knrintind@gmail.com<p>
 
             <div class="icheck-primary d-inline">

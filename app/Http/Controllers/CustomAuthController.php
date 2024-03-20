@@ -423,11 +423,6 @@ class CustomAuthController extends Controller
             return redirect('/dashboard'); // Redirect to the login page
         }
         else{
-        // $school_logo = DB::connection('')->table('schooldetails')->select('schoollogo')->get();
-        $school_details = DB::connection('secondary')->table('schooldetails')->get();
-        $school_logo = DB::connection('secondary')
-        ->table('schooldetails')
-        ->value('schoollogo');
         Session::forget('login');
         Session::forget('users.user_id');
         $email = $request->email;
@@ -446,13 +441,9 @@ class CustomAuthController extends Controller
             $data = ['name' => "Dear Parent,", 'otp' => $otp_number];
             $user['to'] = $email;
 
-            return view('otp' , ['school_details' => $school_details, 'school_logo' => $school_logo] );
+            return view('otp');
         } 
         else {
-            $school_details = DB::connection('secondary')->table('schooldetails')->get();
-            $school_logo = DB::connection('secondary')
-            ->table('schooldetails')
-            ->value('schoollogo');
             $users = DB::select("SELECT * FROM `users` WHERE `email` = '$email'");
             $user_id = $users[0]->id;
             session()->push('users.user_id', $user_id);
@@ -460,7 +451,7 @@ class CustomAuthController extends Controller
             $otp_number = mt_rand(100000, 999999);
             $data = ['name' => "Dear Parent,", 'otp' => $otp_number];
             $user['to'] = $email;
-            return view('otp' , ['school_details' => $school_details, 'school_logo' => $school_logo] );
+            return view('otp');
         }
     }
     }

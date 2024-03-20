@@ -7,7 +7,7 @@
           <br/>
           <a text-align='center' style="margin-left:0px; font-size: 13px;">
           Email : <a text-align='center' style="margin-left:0px; font-size: 13px;" href = "mailto: knrintind@gmail.com">knrintind@gmail.com</a>
-        <!--, <a text-align='center' style="margin-left:0px; font-size: 13px;" href = "mailto: knrintind@gmail.com">knrintind@gmail.com</a>-->
+        <!--, <a text-align='center' style="margin-left:0px; font-size: 13px;" href = "mailto: admissions@npsypr.edu.in">admissions@npsypr.edu.in</a>-->
 		  <br>
 		  <?php 
 			$currentYear = date("Y");

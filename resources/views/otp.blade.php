@@ -22,15 +22,21 @@ if (!empty($rand_key[0])) {
 </head>
 <body>
     <div class="bg-image">
-    <!-- <img src="https://leap.npsypr.edu.in/assets/img/login-register.jpg" class="bg_logo" alt="Logo"> -->
         <div class="card">
         <div class="card-header">
                     <div class="user-panel">
             <div>
-                <img src="{{ asset('public/Image/NPS_logo.png') }}" class="logo" alt="Logo">
+                <?php
+               $school_details = DB::connection('secondary')->table('schooldetails')->get();
+                // print_r($school_details);
+                $school_logo = $school_details[0]->schoollogo;
+                $base_url = $school_details[0]->base_url;
+                echo '<img src="'.$base_url.$school_logo.'" class="logo" alt="Logo">'
+                ?>
+                <!--<img src="{{ asset('public/Image/NPS_logo.png') }}" class="logo" alt="Logo">-->
             </div><br/>
             <div class="card-body">
-                <h1>National Public School</h1>
+                <h1><?php echo $school_details[0]->schoolname ?></h1>
                 <h3>Online Registration</h3>
             </div>
             </div>
@@ -54,7 +60,7 @@ if (!empty($rand_key[0])) {
                 <input type="text" placeholder="Enter the OTP" id="otp" class="form-control" name="otp" autofocus>
                 </div>
                 <div class="col-md-12 d-flex justify-content-center">
-                <div class="g-recaptcha" data-sitekey="6LeUvnggAAAAABBDr_CIHhs3bKyQ5tNRhjWCGvy_" data-callback="enableBtn"></div>
+                <div class="g-recaptcha" data-sitekey="6LfuTH0gAAAAADa966cAoO4eHhGyIla2OkKzXlNK" data-callback="enableBtn"></div>
                 </div>
                 <button disabled="disabled" type="submit" id="button1" class="btn btn-dark btn-block">Login</button>
             </form>
@@ -88,7 +94,7 @@ if (!empty($rand_key[0])) {
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: url("https://leap.npsypr.edu.in/assets/img/login-register.jpg");
+            background-image: url("public/public/Image/school-background.jpg");
             background-size: cover;
             background-repeat: no-repeat;
             filter: blur(5px);
